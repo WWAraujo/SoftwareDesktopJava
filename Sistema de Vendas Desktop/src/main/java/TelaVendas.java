@@ -411,6 +411,11 @@ public class TelaVendas extends javax.swing.JFrame {
         btnRemoverItem.setText("Remover Item [delete]");
 
         jButton1.setText("Produtos [F8]");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Relatorio");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -445,6 +450,11 @@ public class TelaVendas extends javax.swing.JFrame {
 
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F8, 0));
         jMenuItem3.setText("Cadastro Produto");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         listAbrirCaixa.add(jMenuItem3);
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F12, 0));
@@ -461,9 +471,19 @@ public class TelaVendas extends javax.swing.JFrame {
         jMenu1.setText("Consulta");
 
         jMenuItem4.setText("Cliente");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem4);
 
         jMenuItem5.setText("Produto");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem5);
 
         jMenuBar1.add(jMenu1);
@@ -539,15 +559,18 @@ public class TelaVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarCompraActionPerformed
 
     private void abrirCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirCaixaActionPerformed
-        
+          TelaAbrirCaixa caixa = new TelaAbrirCaixa();
+          caixa.setVisible(true);
     }//GEN-LAST:event_abrirCaixaActionPerformed
 
     private void btnAbrirCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirCaixaActionPerformed
-        // TODO add your handling code here:
+       TelaAbrirCaixa caixa = new TelaAbrirCaixa();
+          caixa.setVisible(true);
     }//GEN-LAST:event_btnAbrirCaixaActionPerformed
 
     private void listCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listCadastrarClienteActionPerformed
-       
+        CadastroCliente cadastro = new CadastroCliente();
+        cadastro.setVisible(true);
     }//GEN-LAST:event_listCadastrarClienteActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -558,6 +581,26 @@ public class TelaVendas extends javax.swing.JFrame {
         Relatorio relatorio = new Relatorio();
         relatorio.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        TelaConsultaProduto consulta = new TelaConsultaProduto();
+        consulta.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        TelaConsultaCliente consulta = new TelaConsultaCliente();
+        consulta.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        TelaConsultaProduto consulta = new TelaConsultaProduto();
+        consulta.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        CadastroProduto cadastro = new CadastroProduto();
+        cadastro.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
