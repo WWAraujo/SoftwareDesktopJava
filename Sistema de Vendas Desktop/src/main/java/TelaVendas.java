@@ -1,4 +1,8 @@
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+
 public class TelaVendas extends javax.swing.JFrame {
 
     /**
@@ -37,6 +41,8 @@ public class TelaVendas extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
+        txtAddItem = new javax.swing.JTextField();
+        btnAdd = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -45,7 +51,7 @@ public class TelaVendas extends javax.swing.JFrame {
         jPanel13 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblCompra = new javax.swing.JTable();
         btnAbrirCaixa = new javax.swing.JButton();
         btnCadastrarCliente = new javax.swing.JButton();
         btnFinalizarCompra = new javax.swing.JButton();
@@ -106,7 +112,7 @@ public class TelaVendas extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jLabel4)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 44, Short.MAX_VALUE))
         );
 
         jPanel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -126,7 +132,7 @@ public class TelaVendas extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jLabel3)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 39, Short.MAX_VALUE))
         );
 
         jPanel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -146,18 +152,15 @@ public class TelaVendas extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 40, Short.MAX_VALUE))
         );
 
         jPanel9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Bar-Code-icon.png"))); // NOI18N
-        jLabel1.setText("CÓDIGO DE BARRAS");
+        jLabel1.setText("Consultar Produto");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-
-        jTextField1.setText("Codigo de barras");
 
         jButton2.setText("Inserir");
 
@@ -199,9 +202,9 @@ public class TelaVendas extends javax.swing.JFrame {
                         .addGap(10, 10, 10))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(jTextField1)
-                        .addGap(41, 41, 41))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(18, Short.MAX_VALUE))))
         );
 
         btnBuscar.setText("Buscar Cliente");
@@ -216,6 +219,13 @@ public class TelaVendas extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jTextPane1);
 
+        btnAdd.setText("Adicionar");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -223,6 +233,11 @@ public class TelaVendas extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtAddItem, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAdd)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,15 +271,19 @@ public class TelaVendas extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtAddItem)
+                    .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -329,7 +348,7 @@ public class TelaVendas extends javax.swing.JFrame {
                 .addGap(0, 61, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblCompra.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -340,7 +359,7 @@ public class TelaVendas extends javax.swing.JFrame {
                 "Nome", "Código", "Quantidade", "Valor"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tblCompra);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -555,7 +574,14 @@ public class TelaVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFinalizarCompraActionPerformed
 
     private void btnCancelarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCompraActionPerformed
-        // TODO add your handling code here:
+       int indiceLinha = tblCompra.getSelectedRow();
+       if(indiceLinha >= 0){
+           DefaultTableModel modelo = (DefaultTableModel) tblCompra.getModel();
+           modelo.removeRow(indiceLinha);
+       }else {
+           JOptionPane.showMessageDialog(this, "Selecione uma linha");
+       }
+       
     }//GEN-LAST:event_btnCancelarCompraActionPerformed
 
     private void abrirCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirCaixaActionPerformed
@@ -602,6 +628,10 @@ public class TelaVendas extends javax.swing.JFrame {
         cadastro.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        
+    }//GEN-LAST:event_btnAddActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -641,6 +671,7 @@ public class TelaVendas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem abrirCaixa;
     private javax.swing.JButton btnAbrirCaixa;
+    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCadastrarCliente;
     private javax.swing.JButton btnCancelarCompra;
@@ -680,11 +711,12 @@ public class TelaVendas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JMenu listAbrirCaixa;
     private javax.swing.JMenuItem listCadastrarCliente;
     private javax.swing.JMenuItem listFinalizarCompra;
+    private javax.swing.JTable tblCompra;
+    private javax.swing.JTextField txtAddItem;
     // End of variables declaration//GEN-END:variables
 }
