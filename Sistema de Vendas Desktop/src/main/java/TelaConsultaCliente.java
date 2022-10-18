@@ -14,6 +14,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
      */
     public TelaConsultaCliente() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

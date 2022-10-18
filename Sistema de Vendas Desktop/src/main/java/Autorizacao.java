@@ -14,8 +14,9 @@ public class Autorizacao extends javax.swing.JFrame {
      */
     public Autorizacao() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,6 +35,9 @@ public class Autorizacao extends javax.swing.JFrame {
         txtSenhaUser = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Autorização");
+
+        jPanel1.setToolTipText("Autorização");
 
         btnAutorizar.setText("Autorizar");
         btnAutorizar.addActionListener(new java.awt.event.ActionListener() {

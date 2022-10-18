@@ -14,6 +14,7 @@ public class TelaAbrirCaixa extends javax.swing.JFrame {
      */
     public TelaAbrirCaixa() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -48,6 +49,7 @@ public class TelaAbrirCaixa extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Abrir Caixa");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ABRIR CAIXA", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 

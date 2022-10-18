@@ -14,6 +14,7 @@ public class TelaConsultaProduto extends javax.swing.JFrame {
      */
     public TelaConsultaProduto() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
