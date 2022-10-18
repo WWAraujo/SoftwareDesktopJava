@@ -741,7 +741,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/User-Clients-icon_1.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="   Cliente [F5]"/>
+        <Property name="text" type="java.lang.String" value="   Cadastro Cliente [F5]"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastrarClienteActionPerformed"/>

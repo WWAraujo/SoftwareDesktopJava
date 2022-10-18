@@ -412,7 +412,7 @@ public class TelaVendas extends javax.swing.JFrame {
         });
 
         btnCadastrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/User-Clients-icon_1.png"))); // NOI18N
-        btnCadastrarCliente.setText("   Cliente [F5]");
+        btnCadastrarCliente.setText("   Cadastro Cliente [F5]");
         btnCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarClienteActionPerformed(evt);

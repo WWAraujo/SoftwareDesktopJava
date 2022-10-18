@@ -87,29 +87,30 @@
                               <Component id="txtCodCliente" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="btnCancelar" linkSize="8" min="-2" pref="123" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btnPesqueisarCli" linkSize="8" min="-2" pref="129" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="32767" attributes="0"/>
-                          <Component id="btnSalvar" linkSize="8" min="-2" pref="123" max="-2" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel8" min="-2" pref="64" max="-2" attributes="0"/>
                               <Component id="jLabel9" linkSize="4" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txtDataNacimentoCliente" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="btnCancelar" linkSize="8" min="-2" pref="123" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtDataNacimentoCliente" max="32767" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="jRadioButton1" linkSize="10" min="-2" pref="90" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jRadioButton2" linkSize="10" min="-2" pref="88" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jRadioButton3" linkSize="10" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jButton1" linkSize="8" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
+                              <Component id="jRadioButton1" linkSize="10" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="btnPesqueisarCli" linkSize="8" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
+                              <Component id="jRadioButton2" linkSize="10" alignment="0" min="-2" pref="88" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jRadioButton3" linkSize="10" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnSalvar" linkSize="8" min="-2" pref="123" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -120,7 +121,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="13" max="32767" attributes="0"/>
+                  <EmptySpace pref="27" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtCodCliente" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -169,9 +170,14 @@
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnPesqueisarCli" max="32767" attributes="0"/>
-                      <Component id="btnCancelar" max="32767" attributes="0"/>
-                      <Component id="btnSalvar" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnCancelar" linkSize="11" alignment="3" max="32767" attributes="0"/>
+                          <Component id="jButton1" linkSize="11" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnSalvar" linkSize="11" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="btnPesqueisarCli" linkSize="11" alignment="3" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -345,6 +351,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCodCliente">
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Excluir"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
