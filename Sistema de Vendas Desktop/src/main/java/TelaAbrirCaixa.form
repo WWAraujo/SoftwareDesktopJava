@@ -67,9 +67,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jButton2" min="-2" pref="126" max="-2" attributes="0"/>
+                          <Component id="btnCancelarAbrirCaixa" min="-2" pref="126" max="-2" attributes="0"/>
                           <EmptySpace pref="81" max="32767" attributes="0"/>
-                          <Component id="jButton1" min="-2" pref="141" max="-2" attributes="0"/>
+                          <Component id="btnAbrirCaixa" min="-2" pref="141" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -123,8 +123,8 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButton1" pref="43" max="32767" attributes="0"/>
-                      <Component id="jButton2" max="32767" attributes="0"/>
+                      <Component id="btnAbrirCaixa" pref="43" max="32767" attributes="0"/>
+                      <Component id="btnCancelarAbrirCaixa" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -187,12 +187,12 @@
         </Component>
         <Component class="javax.swing.JPasswordField" name="txtSenhaOperador">
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btnAbrirCaixa">
           <Properties>
             <Property name="text" type="java.lang.String" value="ABRIR CAIXA"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="btnCancelarAbrirCaixa">
           <Properties>
             <Property name="text" type="java.lang.String" value="CANCELAR"/>
           </Properties>
