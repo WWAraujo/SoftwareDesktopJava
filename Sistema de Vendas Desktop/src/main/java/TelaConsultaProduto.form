@@ -105,7 +105,7 @@
                     <Column editable="true" title="Codigo" type="java.lang.Object"/>
                     <Column editable="true" title="Nome " type="java.lang.Object"/>
                     <Column editable="true" title="Valor" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                    <Column editable="true" title="Estoque" type="java.lang.Object"/>
                   </Table>
                 </Property>
               </Properties>

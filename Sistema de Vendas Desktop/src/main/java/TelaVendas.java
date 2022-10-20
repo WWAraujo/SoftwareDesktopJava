@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -67,6 +68,7 @@ public class TelaVendas extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -162,6 +164,15 @@ public class TelaVendas extends javax.swing.JFrame {
         jLabel1.setText("Consultar Produto");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
+        txtConsultarProd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtConsultarProdMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtConsultarProdMouseExited(evt);
+            }
+        });
+
         btnInserirProd.setText("Inserir");
 
         btnConsultarProd.setText("Consulta");
@@ -214,11 +225,35 @@ public class TelaVendas extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtCPFCLiente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtCPFCLienteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtCPFCLienteMouseExited(evt);
+            }
+        });
 
         jLabel12.setText("Cliente atual: ");
 
+        txtClienteAtual.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtClienteAtualMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtClienteAtualMouseExited(evt);
+            }
+        });
         jScrollPane1.setViewportView(txtClienteAtual);
 
+        txtAddItem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtAddItemMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtAddItemMouseExited(evt);
+            }
+        });
         txtAddItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAddItemActionPerformed(evt);
@@ -502,6 +537,11 @@ public class TelaVendas extends javax.swing.JFrame {
         jMenuItem2.setText("Remover Item");
         listAbrirCaixa.add(jMenuItem2);
 
+        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Log-Out-icon.png"))); // NOI18N
+        jMenuItem6.setText("Sair");
+        listAbrirCaixa.add(jMenuItem6);
+
         jMenuBar1.add(listAbrirCaixa);
         jMenuBar1.add(jMenu2);
 
@@ -659,6 +699,38 @@ public class TelaVendas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddItemActionPerformed
 
+    private void txtClienteAtualMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtClienteAtualMouseEntered
+        this.txtClienteAtual.setBackground(Color.gray);
+    }//GEN-LAST:event_txtClienteAtualMouseEntered
+
+    private void txtClienteAtualMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtClienteAtualMouseExited
+        this.txtClienteAtual.setBackground(Color.white);
+    }//GEN-LAST:event_txtClienteAtualMouseExited
+
+    private void txtCPFCLienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCPFCLienteMouseEntered
+        this.txtCPFCLiente.setBackground(Color.gray);
+    }//GEN-LAST:event_txtCPFCLienteMouseEntered
+
+    private void txtCPFCLienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCPFCLienteMouseExited
+        this.txtCPFCLiente.setBackground(Color.white);
+    }//GEN-LAST:event_txtCPFCLienteMouseExited
+
+    private void txtAddItemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAddItemMouseEntered
+        this.txtAddItem.setBackground(Color.gray);
+    }//GEN-LAST:event_txtAddItemMouseEntered
+
+    private void txtAddItemMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAddItemMouseExited
+        this.txtAddItem.setBackground(Color.white);
+    }//GEN-LAST:event_txtAddItemMouseExited
+
+    private void txtConsultarProdMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtConsultarProdMouseEntered
+        this.txtConsultarProd.setBackground(Color.gray);
+    }//GEN-LAST:event_txtConsultarProdMouseEntered
+
+    private void txtConsultarProdMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtConsultarProdMouseExited
+       this.txtConsultarProd.setBackground(Color.white);
+    }//GEN-LAST:event_txtConsultarProdMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -725,6 +797,7 @@ public class TelaVendas extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;

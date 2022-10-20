@@ -65,8 +65,8 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="txtuserCaixa" pref="159" max="32767" attributes="0"/>
-                      <Component id="txtSenhaUser" max="32767" attributes="0"/>
+                      <Component id="txtUserCaixa" linkSize="3" pref="159" max="32767" attributes="0"/>
+                      <Component id="jpSenha" linkSize="3" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -78,12 +78,12 @@
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" linkSize="2" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="txtuserCaixa" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtUserCaixa" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" linkSize="2" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                      <Component id="txtSenhaUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jpSenha" linkSize="4" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="32" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -121,12 +121,18 @@
             <Property name="text" type="java.lang.String" value="Senha:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtuserCaixa">
+        <Component class="javax.swing.JTextField" name="txtUserCaixa">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtuserCaixaActionPerformed"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtUserCaixaMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtUserCaixaMouseExited"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUserCaixaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtSenhaUser">
+        <Component class="javax.swing.JPasswordField" name="jpSenha">
+          <Events>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jpSenhaMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jpSenhaMouseExited"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

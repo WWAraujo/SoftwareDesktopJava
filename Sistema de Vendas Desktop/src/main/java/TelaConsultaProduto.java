@@ -48,7 +48,7 @@ public class TelaConsultaProduto extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Codigo", "Nome ", "Valor", "Title 4"
+                "Codigo", "Nome ", "Valor", "Estoque"
             }
         ));
         jScrollPane1.setViewportView(tblConsultaProd);

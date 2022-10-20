@@ -1,3 +1,6 @@
+
+import java.awt.Color;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -31,8 +34,8 @@ public class Autorizacao extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtuserCaixa = new javax.swing.JTextField();
-        txtSenhaUser = new javax.swing.JTextField();
+        txtUserCaixa = new javax.swing.JTextField();
+        jpSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Autorização");
@@ -54,9 +57,26 @@ public class Autorizacao extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Senha:");
 
-        txtuserCaixa.addActionListener(new java.awt.event.ActionListener() {
+        txtUserCaixa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtUserCaixaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtUserCaixaMouseExited(evt);
+            }
+        });
+        txtUserCaixa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtuserCaixaActionPerformed(evt);
+                txtUserCaixaActionPerformed(evt);
+            }
+        });
+
+        jpSenha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jpSenhaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jpSenhaMouseExited(evt);
             }
         });
 
@@ -77,12 +97,14 @@ public class Autorizacao extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtuserCaixa, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                    .addComponent(txtSenhaUser))
+                    .addComponent(txtUserCaixa, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                    .addComponent(jpSenha))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel2});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jpSenha, txtUserCaixa});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,11 +112,11 @@ public class Autorizacao extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtuserCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUserCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSenhaUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jpSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
@@ -103,6 +125,8 @@ public class Autorizacao extends javax.swing.JFrame {
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, jLabel2});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jpSenha, txtUserCaixa});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,14 +148,30 @@ public class Autorizacao extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtuserCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtuserCaixaActionPerformed
+    private void txtUserCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserCaixaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtuserCaixaActionPerformed
+    }//GEN-LAST:event_txtUserCaixaActionPerformed
 
     private void btnAutorizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutorizarActionPerformed
         TelaVendas vendas = new TelaVendas();
         vendas.setVisible(true);
     }//GEN-LAST:event_btnAutorizarActionPerformed
+
+    private void txtUserCaixaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUserCaixaMouseEntered
+        this.txtUserCaixa.setBackground(Color.gray);
+    }//GEN-LAST:event_txtUserCaixaMouseEntered
+
+    private void txtUserCaixaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUserCaixaMouseExited
+       this.txtUserCaixa.setBackground(Color.white);
+    }//GEN-LAST:event_txtUserCaixaMouseExited
+
+    private void jpSenhaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpSenhaMouseEntered
+        this.jpSenha.setBackground(Color.gray);
+    }//GEN-LAST:event_jpSenhaMouseEntered
+
+    private void jpSenhaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpSenhaMouseExited
+        this.jpSenha.setBackground(Color.white);
+    }//GEN-LAST:event_jpSenhaMouseExited
 
     /**
      * @param args the command line arguments
@@ -174,7 +214,7 @@ public class Autorizacao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtSenhaUser;
-    private javax.swing.JTextField txtuserCaixa;
+    private javax.swing.JPasswordField jpSenha;
+    private javax.swing.JTextField txtUserCaixa;
     // End of variables declaration//GEN-END:variables
 }
