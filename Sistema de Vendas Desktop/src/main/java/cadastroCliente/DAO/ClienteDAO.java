@@ -18,7 +18,7 @@ public class ClienteDAO {
 
     public static String url = "jdbc:mysql://localhost:3306/cliente";
     public static String login = "root";
-    public static String senha = "";
+    public static String senha = "Rafa140794";
 
     public static boolean salvar(Cliente obj) {
 
