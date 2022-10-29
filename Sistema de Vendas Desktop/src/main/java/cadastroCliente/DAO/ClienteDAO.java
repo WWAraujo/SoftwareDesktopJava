@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  */
 public class ClienteDAO {
 
-    public static String url = "jdbc:mysql://localhost:3306/cliente";
+    public static String url = "jdbc:mysql://localhost:3306/lojaWRS";
     public static String login = "root";
     public static String senha = "";
 
