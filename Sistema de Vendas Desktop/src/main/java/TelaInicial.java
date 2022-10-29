@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import cadastroCliente.DAO.PrepararBancoDAO;
+import javax.swing.JOptionPane;
 /**
  *
  * @author wallace.waraujo
@@ -95,6 +97,15 @@ public class TelaInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+        
+            boolean retorno = PrepararBancoDAO.CriarBanco();
+            if (retorno) {
+                JOptionPane.showMessageDialog(this,"Banco criado com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Falha na gravação!");
+            }
+        
+        
         Autorizacao autorizacao = new Autorizacao();
         autorizacao.setVisible(true);
     }//GEN-LAST:event_btnIniciarActionPerformed
