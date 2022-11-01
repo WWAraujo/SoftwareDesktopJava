@@ -4,7 +4,6 @@
  */
 package SQL.DAO;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -34,17 +33,15 @@ public class PrepararBancoDAO {
             PreparedStatement limparSQL = conexao.prepareStatement("drop database if exists lojaWRS;\n"
                     + "create database lojaWRS;");
             PreparedStatement criarClienteSQL = conexao.prepareStatement("use lojaWRS;\n"
-                    + "create table cliente (\n"
-                    + "cod_cli int primary key auto_increment,\n"
+                    + "create table cliente (cod_cli int primary key auto_increment,\n"
                     + "nome_cli varchar (40) not null,\n"
                     + "cpf_cli varchar (14) not null unique,\n"
-                    + "celular_cli varchar (11),\n"
+                    + "celular_cli varchar (15),\n"
                     + "endereco_cli varchar (50),\n"
                     + "email_cli varchar (50),\n"
                     + "estadoCivil_cli varchar (10),\n"
                     + "data_nascimento_cli date not null,\n"
-                    + "sexo varchar (15) not null\n"
-                    + ");");
+                    + "sexo_cli varchar (15));");
 
             int linhasAfetadas = criarClienteSQL.executeUpdate();
             if (linhasAfetadas > 0) {
