@@ -37,11 +37,11 @@ public class PrepararBancoDAO {
                     + "create table cliente (\n"
                     + "cod_cli int primary key auto_increment,\n"
                     + "nome_cli varchar (40) not null,\n"
-                    + "cpf_cli varchar (11) not null unique,\n"
+                    + "cpf_cli varchar (14) not null unique,\n"
                     + "celular_cli varchar (11),\n"
                     + "endereco_cli varchar (50),\n"
                     + "email_cli varchar (50),\n"
-                    + "estadoCivil_cli varchar (20),\n"
+                    + "estadoCivil_cli varchar (10),\n"
                     + "data_nascimento_cli date not null,\n"
                     + "sexo varchar (15) not null\n"
                     + ");");
