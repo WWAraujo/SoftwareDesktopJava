@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-import cadastroCliente.DAO.PrepararBancoDAO;
+import SQL.DAO.PrepararBancoDAO;
 import javax.swing.JOptionPane;
 /**
  *
@@ -19,6 +19,7 @@ public class TelaInicial extends javax.swing.JFrame {
         setExtendedState(MAXIMIZED_BOTH);
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,19 +60,19 @@ public class TelaInicial extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(692, 692, 692)
-                        .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(451, 451, 451)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(526, 526, 526)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(715, Short.MAX_VALUE))
+                        .addGap(647, 647, 647)
+                        .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(790, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(110, Short.MAX_VALUE)
+                .addContainerGap(136, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81)
+                .addGap(55, 55, 55)
                 .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(225, 225, 225))
         );
@@ -98,13 +99,16 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         
-            boolean retorno = PrepararBancoDAO.CriarBanco();
-            if (retorno) {
-                JOptionPane.showMessageDialog(this,"Banco criado com sucesso!");
-            } else {
-                JOptionPane.showMessageDialog(this, "Falha na gravação!");
-            }
-        
+        //if (this.objPrepararBanco == null) {
+            
+        //    objPrepararBanco = new Banco();
+        //    boolean retorno = PrepararBancoDAO.CriarBanco(objPrepararBanco);
+        //    if (retorno) {
+        //        JOptionPane.showMessageDialog(this,"Banco criado com sucesso!");
+        //    } else {
+        //        JOptionPane.showMessageDialog(this, "Falha na gravação!");
+        //    }
+        //}
         
         Autorizacao autorizacao = new Autorizacao();
         autorizacao.setVisible(true);

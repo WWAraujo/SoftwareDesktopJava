@@ -1,5 +1,5 @@
 
-package cadastroCliente.DAO;
+package SQL.DAO;
 
 /**
  *
