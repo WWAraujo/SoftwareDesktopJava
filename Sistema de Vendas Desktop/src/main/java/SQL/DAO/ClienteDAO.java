@@ -1,4 +1,4 @@
-package cadastroCliente.DAO;
+package SQL.DAO;
 
 import cadastroCliente.model.Cliente;
 import java.sql.Connection;
@@ -31,9 +31,10 @@ public class ClienteDAO {
             
             conexao = DriverManager.getConnection(url,login,senha);
             
-            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO cliente (nome_cli,cpf_cli) VALUES(?,?)");
+            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO cliente (nome_cli,cpf_cli,data_nascimento_cli) VALUES(?,?,?)");
             comandoSQL.setString(1,obj.getNomeCliente());
             comandoSQL.setString(2,obj.getCPFCliente());
+            comandoSQL.setString(3,obj.getAniverCliente());
             
             int linhasAfetadas = comandoSQL.executeUpdate();
             if(linhasAfetadas>0){

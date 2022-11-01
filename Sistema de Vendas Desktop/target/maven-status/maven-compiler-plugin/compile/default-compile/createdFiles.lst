@@ -1,13 +1,11 @@
 cadastroCliente\model\Produto.class
 cadastroCliente\model\Cliente.class
 TelaVendas$4.class
-cadastroCliente\DAO\VendasDAO.class
 TelaVendas$1.class
 TelaAbrirCaixa$1.class
 TelaVendas$15.class
 Autorizacao$2.class
 TelaVendas$11.class
-cadastroCliente\DAO\ClienteDAO.class
 Relatorio$2.class
 CadastroProduto$1.class
 TelaVendas$18.class
@@ -18,7 +16,6 @@ TelaVendas$14.class
 TelaVendas$5.class
 CadastroCliente$5.class
 TelaAbrirCaixa.class
-cadastroCliente\DAO\FuncionarioDAO.class
 Autorizacao$3.class
 TelaVendas$8.class
 TelaVendas$17.class
@@ -28,7 +25,6 @@ CadastroCliente$1.class
 TelaVendas$6.class
 CadastroCliente.class
 TelaConsultaProduto$1.class
-cadastroCliente\DAO\PrepararBancoDAO.class
 CadastroCliente$4.class
 TelaVendas$10.class
 TelaVendas$9.class
@@ -40,7 +36,6 @@ TelaAbrirCaixa$2.class
 Relatorio.class
 TelaVendas$13.class
 Autorizacao$5.class
-cadastroCliente\DAO\ProdutoDAO.class
 RelatorioVendas$1.class
 Autorizacao.class
 TelaVendas$19.class
