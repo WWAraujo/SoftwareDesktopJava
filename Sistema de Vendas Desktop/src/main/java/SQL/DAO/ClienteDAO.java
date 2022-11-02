@@ -1,6 +1,6 @@
 package SQL.DAO;
 
-import cadastroCliente.model.Cliente;
+import cadastro.model.Cliente;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
