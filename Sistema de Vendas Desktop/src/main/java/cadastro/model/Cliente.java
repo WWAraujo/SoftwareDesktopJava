@@ -1,5 +1,5 @@
 
-package cadastroCliente.model;
+package cadastro.model;
 
 /**
  *
