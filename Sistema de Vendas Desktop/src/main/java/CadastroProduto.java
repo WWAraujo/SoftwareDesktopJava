@@ -250,7 +250,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         if (this.objCadastroProduto == null) {
             // nome, preço, tipo, tamanho, marca, quantidade, descrição
             String nomeProd = (txtNomeProd.getText());
-            double precoProd = Integer.getInteger(txtPrecoProd.getText());
+            double precoProd = Double.parseDouble(txtPrecoProd.getText());
             String tipoProd = (txtTipoProd.getText());
             String tamanhoProd = String.valueOf(cbxTamanhoProd.getSelectedItem());
             String marcaProd = String.valueOf(cbxMarcaProd.getSelectedItem());
