@@ -259,11 +259,12 @@ public class CadastroCliente extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addComponent(cbxEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnExcluirCli, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesqueisarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnPesqueisarCli, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnExcluirCli, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -312,7 +313,10 @@ public class CadastroCliente extends javax.swing.JFrame {
             String enderecoCliente = (txtEnderecoCliente.getText());
             String emailCliente = (txtEmailCliente.getText());
             
-            
+            // Validar nome
+            if (nomeCliente.equals("")){
+                nomeCliente = null;
+            }
             //Validando se o CPF foi digitado 
             if (cpfCliente.equals("   .   .   -  ")) {
                 cpfCliente = null;
@@ -327,9 +331,14 @@ public class CadastroCliente extends javax.swing.JFrame {
             if (sexoCliente.equals("Selecione...")) {
                 sexoCliente = null;
             }
+            
+            //validar o telefone 
+            if (celularCliente.equals("(  )      -    ")){
+                celularCliente = null;
+            }
 
             //Conferindo de o Usuário inseriu Nome, CPF, Data de Nascimento antes de chamar o DAO.
-            if (nomeCliente != null && cpfCliente != null && dataNasci != null) {
+            if (nomeCliente != null || cpfCliente != null || dataNasci != null) {
 
                 objCadastroCliente = new Cliente(nomeCliente, cpfCliente, dataNascimentoFormatada, celularCliente, 
                         estadoCivil, sexoCliente, enderecoCliente, emailCliente);

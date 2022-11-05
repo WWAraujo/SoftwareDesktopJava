@@ -170,11 +170,13 @@
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnCancelar" linkSize="13" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="btnExcluirCli" linkSize="13" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnPesqueisarCli" linkSize="13" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="btnSalvar" linkSize="13" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnCancelar" linkSize="13" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="btnExcluirCli" linkSize="13" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="btnSalvar" linkSize="13" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace pref="23" max="32767" attributes="0"/>
               </Group>
