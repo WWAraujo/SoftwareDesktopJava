@@ -35,7 +35,7 @@ public class ProdutoDAO {
             //nomeCliente, cpfCliente, dataNascimentoFormatada, celularCliente, estadoCivil, 
     //sexoCliente, enderecoCliente, emailCliente
             PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO lojawrs.produto "
-                    + "(nome_prod,preco_prod,tipo_prod,tamanho_prod,marca_prod,quantidade_prod) "
+                    + "(nome_prod,preco_prod,tipo_prod,tamanho_prod,marca_prod,quantidade_prod,descricao_prod) "
                     + "VALUES(?,?,?,?,?,?,?)");
             comandoSQL.setString(1,obj.getNomeProd());
             comandoSQL.setDouble(2,obj.getPrecoProd());
