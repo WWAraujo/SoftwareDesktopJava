@@ -61,11 +61,11 @@ public class CadastroProduto extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtNomeProd = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtPrecoProd = new javax.swing.JFormattedTextField();
         txtQtdProd = new javax.swing.JFormattedTextField();
         txtTipoProd = new javax.swing.JTextField();
         cbxMarcaProd = new javax.swing.JComboBox<>();
         cbxTamanhoProd = new javax.swing.JComboBox<>();
+        txtPrecoProd = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro Produto");
@@ -123,13 +123,6 @@ public class CadastroProduto extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Preço:");
 
-        txtPrecoProd.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
-        txtPrecoProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPrecoProdActionPerformed(evt);
-            }
-        });
-
         cbxMarcaProd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Nike", "Adidas", "Asics", "Puma", "Fila", "New Balance", "Olympikus" }));
 
         cbxTamanhoProd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "PP", "M", "G", "GG", "XG", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46" }));
@@ -154,11 +147,11 @@ public class CadastroProduto extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtDescricaoProd)
                             .addComponent(txtNomeProd, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
-                            .addComponent(txtPrecoProd)
                             .addComponent(txtQtdProd)
                             .addComponent(txtTipoProd)
                             .addComponent(cbxMarcaProd, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbxTamanhoProd, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(cbxTamanhoProd, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtPrecoProd)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnExcluirProd, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -250,11 +243,11 @@ public class CadastroProduto extends javax.swing.JFrame {
         if (this.objCadastroProduto == null) {
             // nome, preço, tipo, tamanho, marca, quantidade, descrição
             String nomeProd = (txtNomeProd.getText());
-            double precoProd = Double.parseDouble(txtPrecoProd.getText());
+            double precoProd = Double.parseDouble(txtPrecoProd.getText() +"");
             String tipoProd = (txtTipoProd.getText());
             String tamanhoProd = String.valueOf(cbxTamanhoProd.getSelectedItem());
             String marcaProd = String.valueOf(cbxMarcaProd.getSelectedItem());
-            int quantidadeProd= Integer.getInteger(txtQtdProd.getText());
+            int quantidadeProd= Integer.parseInt(txtQtdProd.getText()+"");
             String descricaoProd= (txtDescricaoProd.getText());
             
             //Validando se o tamanho foi Selecionado.
@@ -282,10 +275,6 @@ public class CadastroProduto extends javax.swing.JFrame {
     private void btnExcluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirProdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExcluirProdActionPerformed
-
-    private void txtPrecoProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecoProdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrecoProdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,7 +328,7 @@ public class CadastroProduto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtDescricaoProd;
     private javax.swing.JFormattedTextField txtNomeProd;
-    private javax.swing.JFormattedTextField txtPrecoProd;
+    private javax.swing.JTextField txtPrecoProd;
     private javax.swing.JFormattedTextField txtQtdProd;
     private javax.swing.JTextField txtTipoProd;
     // End of variables declaration//GEN-END:variables
