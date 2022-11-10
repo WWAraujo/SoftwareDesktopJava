@@ -58,28 +58,16 @@ public class Cliente {
         return idCliente;
     }
     
-    public String getCPFCliente(){
-        return cpfCliente;
-    }
-    
     public String getNomeCliente(){
         return nomeCliente;
     }
     
-    public String getAniverCliente(){
-        return aniverCliente;
+    public String getCPFCliente(){
+        return cpfCliente;
     }
     
     public String getCelularCliente(){
         return celularCliente;
-    }
-    
-    public String getEstadoCivil(){
-        return estadoCivil;
-    }
-    
-    public String getSexoCliente(){
-        return sexoCliente;
     }
     
     public String getEnderecoCliente(){
@@ -90,32 +78,32 @@ public class Cliente {
         return emailCliente;
     }
     
-    public void setIdCliente(int idCliente){
-        this.idCliente = idCliente;
+    public String getEstadoCivil(){
+        return estadoCivil;
     }
     
-    public void setCPFCliente(String cpfCliente){
-        this.cpfCliente = cpfCliente;
+    public String getAniverCliente(){
+        return aniverCliente;
+    }
+    
+    public String getSexoCliente(){
+        return sexoCliente;
+    }
+    
+    public void setIdCliente(int idCliente){
+        this.idCliente = idCliente;
     }
     
     public void setNomeCliente(String nomeCliente){
         this.nomeCliente = nomeCliente;
     }
     
-    public void setAniverCliente(String aniverCliente){
-        this.aniverCliente = aniverCliente;
+    public void setCPFCliente(String cpfCliente){
+        this.cpfCliente = cpfCliente;
     }
     
     public void setCelularCliente(String celularCliente){
         this.celularCliente = celularCliente;
-    }
-    
-    public void setEstadoCivil(String estadoCivil){
-        this.estadoCivil = estadoCivil;
-    }
-    
-    public void setSexoCliente(String sexoCliente){
-        this.sexoCliente = sexoCliente;
     }
     
     public void setEnderecoCliente(String enderecoCliente){
@@ -124,6 +112,18 @@ public class Cliente {
     
     public void setEmailCliente(String emailCliente){
         this.emailCliente = emailCliente;
+    }
+    
+    public void setEstadoCivil(String estadoCivil){
+        this.estadoCivil = estadoCivil;
+    }
+    
+    public void setAniverCliente(String aniverCliente){
+        this.aniverCliente = aniverCliente;
+    }
+    
+    public void setSexoCliente(String sexoCliente){
+        this.sexoCliente = sexoCliente;
     }
     
 }

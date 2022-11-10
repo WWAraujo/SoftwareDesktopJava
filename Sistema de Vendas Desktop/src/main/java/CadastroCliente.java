@@ -163,6 +163,11 @@ public class CadastroCliente extends javax.swing.JFrame {
         jLabel7.setText("Codigo Cliente:");
 
         btnExcluirCli.setText("EXCLUIR");
+        btnExcluirCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirCliActionPerformed(evt);
+            }
+        });
 
         cbxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Feminino", "Masculino", "Transgênero", "Neutro", "Não binário" }));
 
@@ -377,34 +382,16 @@ public class CadastroCliente extends javax.swing.JFrame {
 
     private void btnPesqueisarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqueisarCliActionPerformed
 
-        //Chamando a pesquisa clienteDAO e passando em uma lista
-        String nomeCliente = String.valueOf(txtNomeCliente.getText());
-        String cpfCliente = String.valueOf(txtCPFCliente.getText());
+        TelaConsultaCliente consulta = new TelaConsultaCliente();
+        consulta.setVisible(true);
         
-        ArrayList<Cliente> lista = ClienteDAO.pesquisar(nomeCliente,cpfCliente);
-        //Salavar o retorno da ArrayList
-        for (Cliente item : lista) {
-            String vetor[] = (new String[]{String.valueOf(item.getIdCliente()),
-                String.valueOf(item.getCPFCliente()),
-                String.valueOf(item.getNomeCliente()),});
-        }
-
-        /*        if (this.objPesquisarCliente == null) {
-
-            String cpfCliente = String.valueOf(txtCPFCliente.getText());
-            String nomeCliente = String.valueOf(txtNomeCliente.getText() + "%");
-            
-            objPesquisarCliente = new Cliente(nomeCliente,cpfCliente);
-            boolean retorno = ClienteDAO.pesquisar(objPesquisarCliente);
-                if (retorno) {
-                    JOptionPane.showMessageDialog(this, "Cliente encontrao na agenda!");
-               } else {
-                   JOptionPane.showMessageDialog(this, "Erro no banco");
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Digite um campo Obrigatório");
-        }*/
     }//GEN-LAST:event_btnPesqueisarCliActionPerformed
+
+    private void btnExcluirCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCliActionPerformed
+        
+        TelaConsultaCliente consulta = new TelaConsultaCliente();
+        consulta.setVisible(true);
+    }//GEN-LAST:event_btnExcluirCliActionPerformed
 
     /**
      * @param args the command line arguments

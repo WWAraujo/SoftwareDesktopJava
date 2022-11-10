@@ -1,3 +1,10 @@
+
+import SQL.DAO.ClienteDAO;
+import cadastro.model.Cliente;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -31,58 +38,136 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
         btnConsultaCli = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblConsultaCli = new javax.swing.JTable();
+        btnColocarCPFNota = new javax.swing.JButton();
+        btnExcluirCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consultar Cliente");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("Digite o nome do cliente:");
 
-        btnConsultaCli.setText("Consultar");
+        txtConsultaCli.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
+        btnConsultaCli.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnConsultaCli.setText("Pesquisar");
+        btnConsultaCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaCliActionPerformed(evt);
+            }
+        });
+
+        tblConsultaCli.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tblConsultaCli.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Codigo", "Nome", "CPF", "Endereço", "Telefone"
+                "Codigo", "Nome", "CPF", "Telefone", "Endereço", "E-mail", "Estado Civil", "Data Nascimento", "Sexo"
             }
         ));
         jScrollPane1.setViewportView(tblConsultaCli);
+
+        btnColocarCPFNota.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnColocarCPFNota.setText("Inserir CPF na Nota Fiscal");
+
+        btnExcluirCliente.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnExcluirCliente.setText("Excluir ");
+        btnExcluirCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(txtConsultaCli)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnConsultaCli, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 13, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtConsultaCli, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnConsultaCli, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnColocarCPFNota, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnExcluirCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnConsultaCli, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                    .addComponent(txtConsultaCli))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnExcluirCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtConsultaCli, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsultaCli, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnColocarCPFNota, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnColocarCPFNota, btnExcluirCliente});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnConsultaCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaCliActionPerformed
+        
+        //Chamando a pesquisa clienteDAO e passando em uma lista
+        String nomeCliente = String.valueOf(txtConsultaCli.getText());
+        
+
+        ArrayList<Cliente> lista = ClienteDAO.pesquisarNome(nomeCliente);
+        DefaultTableModel modelo = (DefaultTableModel) tblConsultaCli.getModel();
+
+        //Limpar a tabela
+        modelo.setRowCount(0);
+        //Atualizar ou Preencher tabela
+        for (Cliente item : lista) {
+            modelo.addRow(new String[]{ String.valueOf(item.getIdCliente()),
+                                        String.valueOf(item.getNomeCliente()),
+                                        String.valueOf(item.getCPFCliente()),
+                                        String.valueOf(item.getEnderecoCliente()),
+                                        String.valueOf(item.getEmailCliente()),
+                                        String.valueOf(item.getEstadoCivil()),
+                                        String.valueOf(item.getAniverCliente()),
+                                        String.valueOf(item.getSexoCliente()),
+            });
+        }
+    }//GEN-LAST:event_btnConsultaCliActionPerformed
+
+    private void btnExcluirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirClienteActionPerformed
+        
+        int indiceLinha = tblConsultaCli.getSelectedRow();
+        if (indiceLinha >= 0) {
+            DefaultTableModel modelo = (DefaultTableModel) tblConsultaCli.getModel();
+            modelo.removeRow(indiceLinha);
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione uma linha");
+        }
+        
+        int linhaSelecionada = tblConsultaCli.getSelectedRow();
+        int id = Integer.parseInt(tblConsultaCli.getValueAt(linhaSelecionada, 0).toString());
+        
+        boolean retorno = ClienteDAO.excluir(id);
+        if (retorno) {
+            JOptionPane.showMessageDialog(this, "Excluído com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Falha na exclusão!");
+        }
+    }//GEN-LAST:event_btnExcluirClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,7 +205,9 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnColocarCPFNota;
     private javax.swing.JButton btnConsultaCli;
+    private javax.swing.JButton btnExcluirCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblConsultaCli;
