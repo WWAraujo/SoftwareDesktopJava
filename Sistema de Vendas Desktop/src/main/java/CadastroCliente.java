@@ -4,7 +4,9 @@ import cadastro.model.Cliente;
 import com.toedter.calendar.JDateChooser;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,6 +15,7 @@ import javax.swing.JOptionPane;
 public class CadastroCliente extends javax.swing.JFrame {
 
     Cliente objCadastroCliente = null;
+    Cliente objPesquisarCliente = null;
 
     /**
      * Creates new form CadastroCliente
@@ -27,7 +30,6 @@ public class CadastroCliente extends javax.swing.JFrame {
         this.objCadastroCliente = obj;
 
         //Atribuindo os valores do objeto aos campos do formulário
-        //this.lblID.setText(String.valueOf(obj.getIdCliente()));
         this.txtNomeCliente.setText(String.valueOf(obj.getNomeCliente()));
         this.txtCPFCliente.setText(String.valueOf(obj.getCPFCliente()));
 
@@ -143,6 +145,11 @@ public class CadastroCliente extends javax.swing.JFrame {
         btnCancelar.setText("CANCELAR");
 
         btnPesqueisarCli.setText("PESQUISAR");
+        btnPesqueisarCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesqueisarCliActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -299,22 +306,22 @@ public class CadastroCliente extends javax.swing.JFrame {
         //Preparando objeto para novo cadastro no banco de dados
         if (this.objCadastroCliente == null) {
 
-            String nomeCliente = (txtNomeCliente.getText());
-            String cpfCliente = (txtCPFCliente.getText());
+            String nomeCliente = String.valueOf(txtNomeCliente.getText());
+            String cpfCliente = String.valueOf(txtCPFCliente.getText());
 
             Date dataNasci = (txtNascimento.getDate());
             //Formatando o campo data de aniversário.
             SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
             String dataNascimentoFormatada = formatador.format(dataNasci);
-            
+
             String celularCliente = String.valueOf(txtTelefoneCelularCliente.getText());
             String estadoCivil = String.valueOf(cbxEstadoCivil.getSelectedItem());
             String sexoCliente = String.valueOf(cbxSexo.getSelectedItem());
-            String enderecoCliente = (txtEnderecoCliente.getText());
-            String emailCliente = (txtEmailCliente.getText());
-            
+            String enderecoCliente = String.valueOf(txtEnderecoCliente.getText());
+            String emailCliente = String.valueOf(txtEmailCliente.getText());
+
             // Validar nome
-            if (nomeCliente.equals("")){
+            if (nomeCliente.equals("")) {
                 nomeCliente = null;
             }
             //Validando se o CPF foi digitado 
@@ -331,16 +338,16 @@ public class CadastroCliente extends javax.swing.JFrame {
             if (sexoCliente.equals("Selecione...")) {
                 sexoCliente = null;
             }
-            
+
             //validar o telefone 
-            if (celularCliente.equals("(  )      -    ")){
+            if (celularCliente.equals("(  )      -    ")) {
                 celularCliente = null;
             }
 
             //Conferindo de o Usuário inseriu Nome, CPF, Data de Nascimento antes de chamar o DAO.
             if (nomeCliente != null || cpfCliente != null || dataNasci != null) {
 
-                objCadastroCliente = new Cliente(nomeCliente, cpfCliente, dataNascimentoFormatada, celularCliente, 
+                objCadastroCliente = new Cliente(nomeCliente, cpfCliente, dataNascimentoFormatada, celularCliente,
                         estadoCivil, sexoCliente, enderecoCliente, emailCliente);
                 boolean retorno = ClienteDAO.salvar(objCadastroCliente);
                 if (retorno) {
@@ -367,6 +374,37 @@ public class CadastroCliente extends javax.swing.JFrame {
     private void txtEnderecoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderecoClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEnderecoClienteActionPerformed
+
+    private void btnPesqueisarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqueisarCliActionPerformed
+
+        //Chamando a pesquisa clienteDAO e passando em uma lista
+        String nomeCliente = String.valueOf(txtNomeCliente.getText());
+        String cpfCliente = String.valueOf(txtCPFCliente.getText());
+        
+        ArrayList<Cliente> lista = ClienteDAO.pesquisar(nomeCliente,cpfCliente);
+        //Salavar o retorno da ArrayList
+        for (Cliente item : lista) {
+            String vetor[] = (new String[]{String.valueOf(item.getIdCliente()),
+                String.valueOf(item.getCPFCliente()),
+                String.valueOf(item.getNomeCliente()),});
+        }
+
+        /*        if (this.objPesquisarCliente == null) {
+
+            String cpfCliente = String.valueOf(txtCPFCliente.getText());
+            String nomeCliente = String.valueOf(txtNomeCliente.getText() + "%");
+            
+            objPesquisarCliente = new Cliente(nomeCliente,cpfCliente);
+            boolean retorno = ClienteDAO.pesquisar(objPesquisarCliente);
+                if (retorno) {
+                    JOptionPane.showMessageDialog(this, "Cliente encontrao na agenda!");
+               } else {
+                   JOptionPane.showMessageDialog(this, "Erro no banco");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Digite um campo Obrigatório");
+        }*/
+    }//GEN-LAST:event_btnPesqueisarCliActionPerformed
 
     /**
      * @param args the command line arguments

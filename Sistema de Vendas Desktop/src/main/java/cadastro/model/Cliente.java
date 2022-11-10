@@ -21,6 +21,18 @@ public class Cliente {
     public Cliente(){
     }
     
+    public Cliente(String nomeCliente, String cpfCliente){
+        this.cpfCliente = cpfCliente;
+        this.idCliente = idCliente;
+        this.nomeCliente = nomeCliente;
+    }
+    
+    public Cliente(int idCliente, String nomeCliente, String cpfCliente){
+        this.idCliente = idCliente;
+        this.cpfCliente = cpfCliente;
+        this.nomeCliente = nomeCliente;
+    }
+    
     public Cliente(String nomeCliente, String cpfCliente, String aniverCliente ){
         this.cpfCliente = cpfCliente;
         this.idCliente = idCliente;
@@ -78,39 +90,39 @@ public class Cliente {
         return emailCliente;
     }
     
-    public void setIdCliente(){
+    public void setIdCliente(int idCliente){
         this.idCliente = idCliente;
     }
     
-    public void setCPFCliente(){
+    public void setCPFCliente(String cpfCliente){
         this.cpfCliente = cpfCliente;
     }
     
-    public void setNomeCliente(){
+    public void setNomeCliente(String nomeCliente){
         this.nomeCliente = nomeCliente;
     }
     
-    public void setAniverCliente(){
+    public void setAniverCliente(String aniverCliente){
         this.aniverCliente = aniverCliente;
     }
     
-    public void setCelularCliente(){
+    public void setCelularCliente(String celularCliente){
         this.celularCliente = celularCliente;
     }
     
-    public void setEstadoCivil(){
+    public void setEstadoCivil(String estadoCivil){
         this.estadoCivil = estadoCivil;
     }
     
-    public void setSexoCliente(){
+    public void setSexoCliente(String sexoCliente){
         this.sexoCliente = sexoCliente;
     }
     
-    public void setEnderecoCliente(){
+    public void setEnderecoCliente(String enderecoCliente){
         this.enderecoCliente = enderecoCliente;
     }
     
-    public void setEmailCliente(){
+    public void setEmailCliente(String emailCliente){
         this.emailCliente = emailCliente;
     }
     

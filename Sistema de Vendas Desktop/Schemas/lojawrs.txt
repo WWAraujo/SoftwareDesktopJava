@@ -1,0 +1,51 @@
+drop database if exists lojaWRS;
+create database lojaWRS;
+use lojaWRS;
+create table cliente (
+		cod_cli int primary key auto_increment,
+		nome_cli varchar (40) not null,
+		cpf_cli varchar (14) not null unique,
+		celular_cli varchar (15),
+		endereco_cli varchar (50),
+		email_cli varchar (50),
+		estadoCivil_cli varchar (10),
+		data_nascimento_cli date not null,
+		sexo_cli varchar (15));
+                     
+INSERT INTO lojawrs.cliente (nome_cli,cpf_cli,data_nascimento_cli,celular_cli,estadoCivil_cli,sexo_cli,endereco_cli,email_cli) 
+		VALUES('Wallace Teste1','124.465.689-11','1994-10-13','(11)4 9999-9999','Solteiro','Masculino','Rua de São paulo','wallace@senac.edu.br'),
+        ('Wallace teste2', '132.456.798-20','1994-10-13','','','','','');
+
+delimiter $$
+create procedure procurar_cpf_cli(valor varchar(14))
+begin 
+select * from cliente where cpf_cli like valor;
+end
+$$
+
+delimiter $$
+create procedure procurar_nome_cli(valor varchar(40))
+begin 
+select * from cliente where nome_cli like valor;
+end
+$$
+
+-- call procurar_cpf_cli ('1%');
+-- call nome_cli ('wal%');
+
+create table produto (
+		cod_prod int primary key auto_increment,
+		nome_prod varchar (30) not null,
+		preco_prod double not null,
+		tipo_prod varchar (20) not null,
+		tamanho_prod varchar (3) not null,
+		marca_prod varchar (30),
+		quantidade_prod int not null,
+		descricao_prod varchar (30));
+
+INSERT INTO lojawrs.produto (nome_prod,preco_prod,tipo_prod,tamanho_prod,marca_prod,quantidade_prod,descricao_prod) 
+		VALUES('Wallace Teste1',591.5,'blusa','GG','Nike',10,'teste'),
+        ('Wallace Teste2',59,'blusas','G','',18,'');
+        
+select * from produto;
+drop table produto;
