@@ -140,11 +140,11 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="btnCancelar" linkSize="12" min="-2" pref="118" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnExcluirCli" linkSize="12" min="-2" pref="128" max="-2" attributes="0"/>
+                          <Component id="btnAlterarCli" linkSize="12" min="-2" pref="128" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnPesqueisarCli" linkSize="12" min="-2" pref="118" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnSalvar" linkSize="12" min="-2" pref="116" max="-2" attributes="0"/>
+                          <Component id="btnSalvarCli" linkSize="12" min="-2" pref="116" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -207,8 +207,8 @@
                       <Component id="btnPesqueisarCli" linkSize="13" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnCancelar" linkSize="13" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="btnExcluirCli" linkSize="13" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="btnSalvar" linkSize="13" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="btnAlterarCli" linkSize="13" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="btnSalvarCli" linkSize="13" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="23" max="32767" attributes="0"/>
@@ -309,12 +309,12 @@
             <Property name="horizontalTextPosition" type="int" value="2"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnSalvar">
+        <Component class="javax.swing.JButton" name="btnSalvarCli">
           <Properties>
             <Property name="text" type="java.lang.String" value="SALVAR"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvarCliActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCancelar">
@@ -361,12 +361,12 @@
             <Property name="text" type="java.lang.String" value="Codigo Cliente:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnExcluirCli">
+        <Component class="javax.swing.JButton" name="btnAlterarCli">
           <Properties>
-            <Property name="text" type="java.lang.String" value="EXCLUIR"/>
+            <Property name="text" type="java.lang.String" value="ALTERAR"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirCliActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlterarCliActionPerformed"/>
           </Events>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="txtNascimento">

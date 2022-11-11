@@ -55,7 +55,7 @@ public class ClienteDAO {
         return retorno;
     }
     
-    public static boolean atualizarNome(Cliente obj){
+    public static boolean alterarCliente(Cliente obj, int id){
         
         Connection conexao = null;
         boolean retorno = false;
@@ -65,11 +65,24 @@ public class ClienteDAO {
             Class.forName("com.mysql.cj.jdbc.Driver");
             
             conexao = DriverManager.getConnection(url,login,senha);
-            
-            PreparedStatement comandoSQL = conexao.prepareStatement("UPDATE cliente SET nome_cli=?, WHERE cod_cli = ?, cpf_cliente = ?");
+            PreparedStatement comandoSQL = conexao.prepareStatement("UPDATE cliente SET "
+                    + "nome_cli=?, "
+                    + "cpf_cli=?, "
+                    + "data_nascimento_cli=?, "
+                    + "celular_cli=?, "
+                    + "estadoCivil_cli=?, "
+                    + "sexo_cli=? "
+                    + "endereco_cli=?, "
+                    + "email_cli=?, "
+                    + "where cod_cli = "+id+"");
             comandoSQL.setString(1,obj.getNomeCliente());
-            comandoSQL.setInt(2,obj.getIdCliente());
             comandoSQL.setString(2,obj.getCPFCliente());
+            comandoSQL.setString(3,obj.getAniverCliente());
+            comandoSQL.setString(4,obj.getCelularCliente());
+            comandoSQL.setString(5,obj.getEstadoCivil());
+            comandoSQL.setString(6,obj.getSexoCliente());
+            comandoSQL.setString(7,obj.getEnderecoCliente());
+            comandoSQL.setString(8,obj.getEmailCliente());
             
             int linhasAfetadas = comandoSQL.executeUpdate();
             if(linhasAfetadas>0){
