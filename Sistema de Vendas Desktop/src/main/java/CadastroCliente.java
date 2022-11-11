@@ -16,6 +16,7 @@ public class CadastroCliente extends javax.swing.JFrame {
 
     Cliente objCadastroCliente = null;
     Cliente objPesquisarCliente = null;
+    Cliente objAlterarCliente = null;
 
     /**
      * Creates new form CadastroCliente
@@ -57,14 +58,14 @@ public class CadastroCliente extends javax.swing.JFrame {
         txtCPFCliente = new javax.swing.JFormattedTextField();
         txtTelefoneCelularCliente = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
-        btnSalvar = new javax.swing.JButton();
+        btnSalvarCli = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         txtEmailCliente = new javax.swing.JTextField();
         btnPesqueisarCli = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        btnExcluirCli = new javax.swing.JButton();
+        btnAlterarCli = new javax.swing.JButton();
         txtNascimento = new com.toedter.calendar.JDateChooser();
         cbxSexo = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
@@ -142,10 +143,10 @@ public class CadastroCliente extends javax.swing.JFrame {
         jLabel6.setText("Endereço:");
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        btnSalvar.setText("SALVAR");
-        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvarCli.setText("SALVAR");
+        btnSalvarCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarActionPerformed(evt);
+                btnSalvarCliActionPerformed(evt);
             }
         });
 
@@ -174,10 +175,10 @@ public class CadastroCliente extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Codigo Cliente:");
 
-        btnExcluirCli.setText("EXCLUIR");
-        btnExcluirCli.addActionListener(new java.awt.event.ActionListener() {
+        btnAlterarCli.setText("ALTERAR");
+        btnAlterarCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirCliActionPerformed(evt);
+                btnAlterarCliActionPerformed(evt);
             }
         });
 
@@ -230,18 +231,18 @@ public class CadastroCliente extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnExcluirCli, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAlterarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnPesqueisarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSalvarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel3, jLabel4, jLabel6, jLabel9});
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCancelar, btnExcluirCli, btnPesqueisarCli, btnSalvar});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAlterarCli, btnCancelar, btnPesqueisarCli, btnSalvarCli});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,8 +288,8 @@ public class CadastroCliente extends javax.swing.JFrame {
                     .addComponent(btnPesqueisarCli, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnExcluirCli, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnAlterarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSalvarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -296,7 +297,7 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cbxSexo, txtTelefoneCelularCliente});
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCancelar, btnExcluirCli, btnPesqueisarCli, btnSalvar});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAlterarCli, btnCancelar, btnPesqueisarCli, btnSalvarCli});
 
         jMenu1.setText("File");
 
@@ -336,7 +337,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+    private void btnSalvarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCliActionPerformed
 
         //Preparando objeto para novo cadastro no banco de dados
         if (this.objCadastroCliente == null) {
@@ -398,7 +399,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                         + "- Nome\n- CPF\n- Data de Nascimento!");
             }
         }
-    }//GEN-LAST:event_btnSalvarActionPerformed
+    }//GEN-LAST:event_btnSalvarCliActionPerformed
 
     private void txtNomeClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeClienteActionPerformed
         // TODO add your handling code here:
@@ -413,17 +414,73 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEnderecoClienteActionPerformed
 
     private void btnPesqueisarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqueisarCliActionPerformed
-
         TelaConsultaCliente consulta = new TelaConsultaCliente();
         consulta.setVisible(true);
-        
     }//GEN-LAST:event_btnPesqueisarCliActionPerformed
 
-    private void btnExcluirCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCliActionPerformed
+    private void btnAlterarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarCliActionPerformed
         
-        TelaConsultaCliente consulta = new TelaConsultaCliente();
-        consulta.setVisible(true);
-    }//GEN-LAST:event_btnExcluirCliActionPerformed
+        //Preparando objeto para aletar cadastro no banco de dados
+        if (this.objAlterarCliente == null) {
+// como pegar essa informação?
+            int id = Integer.parseInt(jLabel10.getText()+"");
+            String nomeCliente = String.valueOf(txtNomeCliente.getText());
+            String cpfCliente = String.valueOf(txtCPFCliente.getText());
+            Date dataNasci = (txtNascimento.getDate());
+            //Formatando o campo data de aniversário.
+            String dataNascimentoFormatada = null;
+            if (dataNasci != null){
+            SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
+            dataNascimentoFormatada = formatador.format(dataNasci);
+            }
+            String celularCliente = String.valueOf(txtTelefoneCelularCliente.getText());
+            String estadoCivil = String.valueOf(cbxEstadoCivil.getSelectedItem());
+            String sexoCliente = String.valueOf(cbxSexo.getSelectedItem());
+            String enderecoCliente = String.valueOf(txtEnderecoCliente.getText());
+            String emailCliente = String.valueOf(txtEmailCliente.getText());
+
+            // Validar nome
+            if (nomeCliente.equals("")) {
+                nomeCliente = null;
+            }
+            //Validando se o CPF foi digitado 
+            if (cpfCliente.equals("   .   .   -  ")) {
+                cpfCliente = null;
+            }
+
+            //Validando de o Estado Civil foi selecionado
+            if (estadoCivil.equals("Selecione...")) {
+                estadoCivil = null;
+            }
+
+            //Validando de o Sexo foi selecionado
+            if (sexoCliente.equals("Selecione...")) {
+                sexoCliente = null;
+            }
+
+            //validar o telefone 
+            if (celularCliente.equals("(  )      -    ")) {
+                celularCliente = null;
+            }
+
+            //Conferindo de o Usuário inseriu Nome, CPF, Data de Nascimento antes de chamar o DAO.
+            if (nomeCliente != null && cpfCliente != null && dataNascimentoFormatada != null) {
+
+                objAlterarCliente = new Cliente(nomeCliente, cpfCliente, dataNascimentoFormatada, celularCliente,
+                        estadoCivil, sexoCliente, enderecoCliente, emailCliente);
+                boolean retorno = ClienteDAO.alterarCliente(objAlterarCliente, id);
+                if (retorno) {
+                    JOptionPane.showMessageDialog(this, "Cliente anotado na agenda!");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Ou esse cliente está passando o CPF de outra pessoa!\n"
+                            + "Ou nossa agenda está trancada no momento!");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Digite todos os campos obrigatorios:\n "
+                        + "- Nome\n- CPF\n- Data de Nascimento!");
+            }
+        }
+    }//GEN-LAST:event_btnAlterarCliActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         this.dispose();
@@ -480,10 +537,10 @@ public class CadastroCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlterarCli;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnExcluirCli;
     private javax.swing.JButton btnPesqueisarCli;
-    private javax.swing.JButton btnSalvar;
+    private javax.swing.JButton btnSalvarCli;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbxEstadoCivil;
     private javax.swing.JComboBox<String> cbxSexo;
