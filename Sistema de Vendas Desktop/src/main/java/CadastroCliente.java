@@ -45,6 +45,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -68,6 +69,12 @@ public class CadastroCliente extends javax.swing.JFrame {
         cbxSexo = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         cbxEstadoCivil = new javax.swing.JComboBox<>();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro Cliente");
@@ -143,6 +150,11 @@ public class CadastroCliente extends javax.swing.JFrame {
         });
 
         btnCancelar.setText("CANCELAR");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnPesqueisarCli.setText("PESQUISAR");
         btnPesqueisarCli.addActionListener(new java.awt.event.ActionListener() {
@@ -286,6 +298,24 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCancelar, btnExcluirCli, btnPesqueisarCli, btnSalvar});
 
+        jMenu1.setText("File");
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        jMenuItem2.setText("Cancelar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -316,9 +346,11 @@ public class CadastroCliente extends javax.swing.JFrame {
 
             Date dataNasci = (txtNascimento.getDate());
             //Formatando o campo data de aniversário.
+            String dataNascimentoFormatada = null;
+            if (dataNasci != null){
             SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
-            String dataNascimentoFormatada = formatador.format(dataNasci);
-
+            dataNascimentoFormatada = formatador.format(dataNasci);
+            }
             String celularCliente = String.valueOf(txtTelefoneCelularCliente.getText());
             String estadoCivil = String.valueOf(cbxEstadoCivil.getSelectedItem());
             String sexoCliente = String.valueOf(cbxSexo.getSelectedItem());
@@ -350,7 +382,7 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
 
             //Conferindo de o Usuário inseriu Nome, CPF, Data de Nascimento antes de chamar o DAO.
-            if (nomeCliente != null || cpfCliente != null || dataNasci != null) {
+            if (nomeCliente != null && cpfCliente != null && dataNascimentoFormatada != null) {
 
                 objCadastroCliente = new Cliente(nomeCliente, cpfCliente, dataNascimentoFormatada, celularCliente,
                         estadoCivil, sexoCliente, enderecoCliente, emailCliente);
@@ -362,7 +394,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                             + "Ou nossa agenda está trancada no momento!");
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Os campos obrigatorios são:\n "
+                JOptionPane.showMessageDialog(this, "Digite todos os campos obrigatorios:\n "
                         + "- Nome\n- CPF\n- Data de Nascimento!");
             }
         }
@@ -392,6 +424,14 @@ public class CadastroCliente extends javax.swing.JFrame {
         TelaConsultaCliente consulta = new TelaConsultaCliente();
         consulta.setVisible(true);
     }//GEN-LAST:event_btnExcluirCliActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -457,6 +497,11 @@ public class CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JFormattedTextField txtCPFCliente;
     private javax.swing.JTextField txtEmailCliente;
