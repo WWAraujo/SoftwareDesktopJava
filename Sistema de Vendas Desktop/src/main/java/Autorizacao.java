@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -50,6 +51,11 @@ public class Autorizacao extends javax.swing.JFrame {
         });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Usuário:");
@@ -153,8 +159,16 @@ public class Autorizacao extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUserCaixaActionPerformed
 
     private void btnAutorizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutorizarActionPerformed
+        String senhaPadrao = "admin";
+        String user = (txtUserCaixa.getText());
+        String senha = String.valueOf(jpSenha.getPassword());
+        
+        if (user.equals(senhaPadrao) && senha.equals(senhaPadrao)){
         TelaVendas vendas = new TelaVendas();
         vendas.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuário ou Senha errada!");
+        }
     }//GEN-LAST:event_btnAutorizarActionPerformed
 
     private void txtUserCaixaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUserCaixaMouseEntered
@@ -172,6 +186,10 @@ public class Autorizacao extends javax.swing.JFrame {
     private void jpSenhaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpSenhaMouseExited
         this.jpSenha.setBackground(Color.white);
     }//GEN-LAST:event_jpSenhaMouseExited
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments

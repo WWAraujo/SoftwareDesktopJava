@@ -591,6 +591,11 @@ public class TelaVendas extends javax.swing.JFrame {
         jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Log-Out-icon.png"))); // NOI18N
         jMenuItem6.setText("Sair");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         listAbrirCaixa.add(jMenuItem6);
 
         jMenuBar1.add(listAbrirCaixa);
@@ -787,6 +792,11 @@ public class TelaVendas extends javax.swing.JFrame {
     private void txtConsultarProdMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtConsultarProdMouseExited
        this.txtConsultarProd.setBackground(Color.white);
     }//GEN-LAST:event_txtConsultarProdMouseExited
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        ConfirmarSaida sair = new ConfirmarSaida();
+        sair.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments

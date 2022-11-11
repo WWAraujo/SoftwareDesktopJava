@@ -4,7 +4,9 @@ import cadastro.model.Cliente;
 import com.toedter.calendar.JDateChooser;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,6 +15,7 @@ import javax.swing.JOptionPane;
 public class CadastroCliente extends javax.swing.JFrame {
 
     Cliente objCadastroCliente = null;
+    Cliente objPesquisarCliente = null;
 
     /**
      * Creates new form CadastroCliente
@@ -27,7 +30,6 @@ public class CadastroCliente extends javax.swing.JFrame {
         this.objCadastroCliente = obj;
 
         //Atribuindo os valores do objeto aos campos do formulário
-        //this.lblID.setText(String.valueOf(obj.getIdCliente()));
         this.txtNomeCliente.setText(String.valueOf(obj.getNomeCliente()));
         this.txtCPFCliente.setText(String.valueOf(obj.getCPFCliente()));
 
@@ -43,6 +45,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -66,6 +69,12 @@ public class CadastroCliente extends javax.swing.JFrame {
         cbxSexo = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         cbxEstadoCivil = new javax.swing.JComboBox<>();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro Cliente");
@@ -141,8 +150,18 @@ public class CadastroCliente extends javax.swing.JFrame {
         });
 
         btnCancelar.setText("CANCELAR");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnPesqueisarCli.setText("PESQUISAR");
+        btnPesqueisarCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesqueisarCliActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -156,6 +175,11 @@ public class CadastroCliente extends javax.swing.JFrame {
         jLabel7.setText("Codigo Cliente:");
 
         btnExcluirCli.setText("EXCLUIR");
+        btnExcluirCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirCliActionPerformed(evt);
+            }
+        });
 
         cbxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Feminino", "Masculino", "Transgênero", "Neutro", "Não binário" }));
 
@@ -274,6 +298,24 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCancelar, btnExcluirCli, btnPesqueisarCli, btnSalvar});
 
+        jMenu1.setText("File");
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        jMenuItem2.setText("Cancelar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -299,22 +341,24 @@ public class CadastroCliente extends javax.swing.JFrame {
         //Preparando objeto para novo cadastro no banco de dados
         if (this.objCadastroCliente == null) {
 
-            String nomeCliente = (txtNomeCliente.getText());
-            String cpfCliente = (txtCPFCliente.getText());
+            String nomeCliente = String.valueOf(txtNomeCliente.getText());
+            String cpfCliente = String.valueOf(txtCPFCliente.getText());
 
             Date dataNasci = (txtNascimento.getDate());
             //Formatando o campo data de aniversário.
+            String dataNascimentoFormatada = null;
+            if (dataNasci != null){
             SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
-            String dataNascimentoFormatada = formatador.format(dataNasci);
-            
+            dataNascimentoFormatada = formatador.format(dataNasci);
+            }
             String celularCliente = String.valueOf(txtTelefoneCelularCliente.getText());
             String estadoCivil = String.valueOf(cbxEstadoCivil.getSelectedItem());
             String sexoCliente = String.valueOf(cbxSexo.getSelectedItem());
-            String enderecoCliente = (txtEnderecoCliente.getText());
-            String emailCliente = (txtEmailCliente.getText());
-            
+            String enderecoCliente = String.valueOf(txtEnderecoCliente.getText());
+            String emailCliente = String.valueOf(txtEmailCliente.getText());
+
             // Validar nome
-            if (nomeCliente.equals("")){
+            if (nomeCliente.equals("")) {
                 nomeCliente = null;
             }
             //Validando se o CPF foi digitado 
@@ -331,16 +375,16 @@ public class CadastroCliente extends javax.swing.JFrame {
             if (sexoCliente.equals("Selecione...")) {
                 sexoCliente = null;
             }
-            
+
             //validar o telefone 
-            if (celularCliente.equals("(  )      -    ")){
+            if (celularCliente.equals("(  )      -    ")) {
                 celularCliente = null;
             }
 
             //Conferindo de o Usuário inseriu Nome, CPF, Data de Nascimento antes de chamar o DAO.
-            if (nomeCliente != null || cpfCliente != null || dataNasci != null) {
+            if (nomeCliente != null && cpfCliente != null && dataNascimentoFormatada != null) {
 
-                objCadastroCliente = new Cliente(nomeCliente, cpfCliente, dataNascimentoFormatada, celularCliente, 
+                objCadastroCliente = new Cliente(nomeCliente, cpfCliente, dataNascimentoFormatada, celularCliente,
                         estadoCivil, sexoCliente, enderecoCliente, emailCliente);
                 boolean retorno = ClienteDAO.salvar(objCadastroCliente);
                 if (retorno) {
@@ -350,7 +394,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                             + "Ou nossa agenda está trancada no momento!");
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Os campos obrigatorios são:\n "
+                JOptionPane.showMessageDialog(this, "Digite todos os campos obrigatorios:\n "
                         + "- Nome\n- CPF\n- Data de Nascimento!");
             }
         }
@@ -367,6 +411,27 @@ public class CadastroCliente extends javax.swing.JFrame {
     private void txtEnderecoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderecoClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEnderecoClienteActionPerformed
+
+    private void btnPesqueisarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqueisarCliActionPerformed
+
+        TelaConsultaCliente consulta = new TelaConsultaCliente();
+        consulta.setVisible(true);
+        
+    }//GEN-LAST:event_btnPesqueisarCliActionPerformed
+
+    private void btnExcluirCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCliActionPerformed
+        
+        TelaConsultaCliente consulta = new TelaConsultaCliente();
+        consulta.setVisible(true);
+    }//GEN-LAST:event_btnExcluirCliActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -432,6 +497,11 @@ public class CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JFormattedTextField txtCPFCliente;
     private javax.swing.JTextField txtEmailCliente;
