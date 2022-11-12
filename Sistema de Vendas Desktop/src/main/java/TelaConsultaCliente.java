@@ -43,7 +43,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
         btnColocarCPFNota = new javax.swing.JButton();
         btnExcluirCliente = new javax.swing.JButton();
         btnCancelarPesquisa = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnAlterarCli = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consultar Cliente");
@@ -95,10 +95,10 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Alterar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAlterarCli.setText("Alterar");
+        btnAlterarCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAlterarCliActionPerformed(evt);
             }
         });
 
@@ -119,7 +119,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnExcluirCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAlterarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnCancelarPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -127,7 +127,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCancelarPesquisa, btnExcluirCliente, jButton1});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAlterarCli, btnCancelarPesquisa, btnExcluirCliente});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,7 +141,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                            .addComponent(btnAlterarCli, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(btnCancelarPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnExcluirCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -211,7 +211,8 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnCancelarPesquisaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAlterarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarCliActionPerformed
+        
         int linhaSelecionada = tblConsultaCli.getSelectedRow();
 
         if (linhaSelecionada >= 0) {
@@ -237,7 +238,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(this, "Selecione uma linha");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnAlterarCliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -275,11 +276,11 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlterarCli;
     private javax.swing.JButton btnCancelarPesquisa;
     private javax.swing.JButton btnColocarCPFNota;
     private javax.swing.JButton btnConsultaCli;
     private javax.swing.JButton btnExcluirCliente;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblConsultaCli;

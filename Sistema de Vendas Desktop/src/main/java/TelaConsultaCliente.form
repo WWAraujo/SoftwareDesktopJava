@@ -37,7 +37,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnExcluirCliente" linkSize="4" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton1" linkSize="4" min="-2" pref="154" max="-2" attributes="0"/>
+                      <Component id="btnAlterarCli" linkSize="4" min="-2" pref="154" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnCancelarPesquisa" linkSize="4" min="-2" pref="153" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -62,7 +62,7 @@
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                          <Component id="jButton1" alignment="1" pref="36" max="32767" attributes="0"/>
+                          <Component id="btnAlterarCli" alignment="1" pref="36" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnCancelarPesquisa" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="btnExcluirCliente" linkSize="2" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
@@ -218,12 +218,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarPesquisaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnAlterarCli">
       <Properties>
         <Property name="text" type="java.lang.String" value="Alterar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlterarCliActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

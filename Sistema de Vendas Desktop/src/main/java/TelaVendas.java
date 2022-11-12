@@ -1,11 +1,21 @@
 
+import SQL.DAO.ClienteDAO;
+import cadastro.model.Cliente;
 import java.awt.Color;
+import java.text.ParseException;
+import java.util.ArrayList;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
+/**
+ *
+ * @author Wallace.Wagner
+ */
 public class TelaVendas extends javax.swing.JFrame {
 
+    Cliente objCadastroCliente = null;
+    
     /**
      * Creates new form TelaInicial
      */
@@ -13,6 +23,16 @@ public class TelaVendas extends javax.swing.JFrame {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
     }
+
+    
+    
+    public TelaVendas (Cliente obj) throws ParseException {
+        //Iniciando todos os componentes 
+        initComponents();
+        txtClienteAtual.setText(String.valueOf(obj.getCPFCliente()));
+    }
+
+    Cliente objBuscaCliente = null;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,7 +73,7 @@ public class TelaVendas extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
-        txtCPFCLiente = new javax.swing.JFormattedTextField();
+        txtCPFCliente = new javax.swing.JFormattedTextField();
         btnBuscarCliente = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtClienteAtual = new javax.swing.JTextPane();
@@ -418,20 +438,30 @@ public class TelaVendas extends javax.swing.JFrame {
         jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         try {
-            txtCPFCLiente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            txtCPFCliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        txtCPFCLiente.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtCPFCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                txtCPFCLienteMouseEntered(evt);
+                txtCPFClienteMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                txtCPFCLienteMouseExited(evt);
+                txtCPFClienteMouseExited(evt);
+            }
+        });
+        txtCPFCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCPFClienteActionPerformed(evt);
             }
         });
 
         btnBuscarCliente.setText("Buscar Cliente");
+        btnBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarClienteActionPerformed(evt);
+            }
+        });
 
         txtClienteAtual.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -457,7 +487,7 @@ public class TelaVendas extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                    .addComponent(txtCPFCLiente))
+                    .addComponent(txtCPFCliente))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
@@ -465,7 +495,7 @@ public class TelaVendas extends javax.swing.JFrame {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCPFCLiente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCPFCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -692,17 +722,17 @@ public class TelaVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFinalizarCompraActionPerformed
 
     private void btnCancelarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCompraActionPerformed
-       
+
     }//GEN-LAST:event_btnCancelarCompraActionPerformed
 
     private void abrirCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirCaixaActionPerformed
-          TelaAbrirCaixa caixa = new TelaAbrirCaixa();
-          caixa.setVisible(true);
+        TelaAbrirCaixa caixa = new TelaAbrirCaixa();
+        caixa.setVisible(true);
     }//GEN-LAST:event_abrirCaixaActionPerformed
 
     private void btnAbrirCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirCaixaActionPerformed
-       TelaAbrirCaixa caixa = new TelaAbrirCaixa();
-          caixa.setVisible(true);
+        TelaAbrirCaixa caixa = new TelaAbrirCaixa();
+        caixa.setVisible(true);
     }//GEN-LAST:event_btnAbrirCaixaActionPerformed
 
     private void listCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listCadastrarClienteActionPerformed
@@ -740,18 +770,18 @@ public class TelaVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        
+
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnRemoverItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverItemActionPerformed
-    int indiceLinha = tblCompra.getSelectedRow();
-       if(indiceLinha >= 0){
-           DefaultTableModel modelo = (DefaultTableModel) tblCompra.getModel();
-           modelo.removeRow(indiceLinha);
-       }else {
-           JOptionPane.showMessageDialog(this, "Selecione o item!");
-       }
-       
+        int indiceLinha = tblCompra.getSelectedRow();
+        if (indiceLinha >= 0) {
+            DefaultTableModel modelo = (DefaultTableModel) tblCompra.getModel();
+            modelo.removeRow(indiceLinha);
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione o item!");
+        }
+
     }//GEN-LAST:event_btnRemoverItemActionPerformed
 
     private void txtAddItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddItemActionPerformed
@@ -766,13 +796,13 @@ public class TelaVendas extends javax.swing.JFrame {
         this.txtClienteAtual.setBackground(Color.white);
     }//GEN-LAST:event_txtClienteAtualMouseExited
 
-    private void txtCPFCLienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCPFCLienteMouseEntered
-        this.txtCPFCLiente.setBackground(Color.gray);
-    }//GEN-LAST:event_txtCPFCLienteMouseEntered
+    private void txtCPFClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCPFClienteMouseEntered
+        this.txtCPFCliente.setBackground(Color.gray);
+    }//GEN-LAST:event_txtCPFClienteMouseEntered
 
-    private void txtCPFCLienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCPFCLienteMouseExited
-        this.txtCPFCLiente.setBackground(Color.white);
-    }//GEN-LAST:event_txtCPFCLienteMouseExited
+    private void txtCPFClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCPFClienteMouseExited
+        this.txtCPFCliente.setBackground(Color.white);
+    }//GEN-LAST:event_txtCPFClienteMouseExited
 
     private void txtAddItemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAddItemMouseEntered
         this.txtAddItem.setBackground(Color.gray);
@@ -787,13 +817,48 @@ public class TelaVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtConsultarProdMouseEntered
 
     private void txtConsultarProdMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtConsultarProdMouseExited
-       this.txtConsultarProd.setBackground(Color.white);
+        this.txtConsultarProd.setBackground(Color.white);
     }//GEN-LAST:event_txtConsultarProdMouseExited
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         ConfirmarSaida sair = new ConfirmarSaida();
         sair.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void txtCPFClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFClienteActionPerformed
+
+    }//GEN-LAST:event_txtCPFClienteActionPerformed
+
+    /* private void txtCPFClienteFocusLost(java.awt.event.FocusEvent evt) {
+        if(!txtCPFCLiente.getText().trim().equals("")){
+            String cpf = txtCPFCLiente.getText();
+        }
+    } */
+
+    private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
+
+        //Preparando objeto para novo cadastro no banco de dados
+        if (this.objCadastroCliente == null) {
+            
+            String cpfCliente = String.valueOf(txtCPFCliente.getText());
+            
+            
+            if (cpfCliente.equals("   .   .   -  ")) {
+                cpfCliente = null;
+            }
+
+            if (cpfCliente != null) {
+                objBuscaCliente = new Cliente(cpfCliente);
+                retorno = ClienteDAO.pesquisarCPF(objBuscaCliente);
+                txtCPFCliente.setText(retorno);
+            } else {
+                JOptionPane.showMessageDialog(this, "CPF não encontrado! \n"
+                        + "Busque pelo nome ou faça o cadastro. ");
+                TelaConsultaCliente consulta = new TelaConsultaCliente();
+                consulta.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -883,7 +948,7 @@ public class TelaVendas extends javax.swing.JFrame {
     private javax.swing.JMenuItem listFinalizarCompra;
     private javax.swing.JTable tblCompra;
     private javax.swing.JTextField txtAddItem;
-    private javax.swing.JFormattedTextField txtCPFCLiente;
+    private javax.swing.JFormattedTextField txtCPFCliente;
     private javax.swing.JTextPane txtClienteAtual;
     private javax.swing.JTextField txtConsultarProd;
     // End of variables declaration//GEN-END:variables

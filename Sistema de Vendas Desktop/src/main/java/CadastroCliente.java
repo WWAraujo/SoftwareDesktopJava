@@ -504,7 +504,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this, "Cliente alterado com sucesso!");
                         objAlterarCliente = null;
                     } else {
-                        JOptionPane.showMessageDialog(this, "Esse CPF já está cadastrado! \n\t Tente outro");
+                        JOptionPane.showMessageDialog(this, "Algo deu errado na alteração!");
                         objAlterarCliente = null;
                     }
                 } else {

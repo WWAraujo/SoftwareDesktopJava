@@ -39,7 +39,10 @@ public class Cliente {
         this.nomeCliente = nomeCliente;
         this.aniverCliente = aniverCliente;
     }
-    
+
+    public Cliente(String cpfCliente) {
+        this.cpfCliente = cpfCliente;
+    }
     
     public Cliente(String nomeCliente, String cpfCliente, String aniverCliente, String celularCliente, 
             String estadoCivil, String sexoCliente, String enderecoCliente, String emailCliente ){

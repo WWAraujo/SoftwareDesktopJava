@@ -119,7 +119,6 @@ public class ClienteDAO {
             
             
             PreparedStatement comandoSQL = conexao.prepareStatement("call procurar_nome_cli ('"+nome+"%');");
-            
             // Executar o comando
             ResultSet rs = comandoSQL.executeQuery();
             
@@ -147,10 +146,10 @@ public class ClienteDAO {
         return lista;
     }
 
-    public static ArrayList<Cliente> pesquisarCPF(String cpfCliente) {
+    public static boolean pesquisarCPF(String cpf) {
 
         Connection conexao = null;
-        ArrayList<Cliente> lista = new ArrayList<Cliente>();
+        boolean retorno = false;
         
         try {
             //Chamar o acesso ao banco
@@ -160,27 +159,21 @@ public class ClienteDAO {
             conexao = DriverManager.getConnection(url, login, senha);
 
             //Comando sql
-            PreparedStatement comandoSQL = conexao.prepareStatement("call procurar_cpf_cli ("+cpfCliente+")");
+            PreparedStatement comandoSQL = conexao.prepareStatement("select cpf_cli from cliente where cpf_cli = '?';");
+            comandoSQL.setString(1, cpf);
             
-            // Executar o comando
-            ResultSet rs = comandoSQL.executeQuery();
-            //Validar o comando
-            if (rs != null) {
-                while(rs.next()){
-                    Cliente novoObjeto = new Cliente();
-                    novoObjeto.setIdCliente(rs.getInt("cod_cli"));
-                    novoObjeto.setCPFCliente(rs.getString("cpf_cli"));
-                    novoObjeto.setNomeCliente(rs.getString("nome_cli"));
-                    
-                    lista.add(novoObjeto);
-                }
+            // Executar o comando e verificar se encontou o cpf
+            int linhasAfetadas = comandoSQL.executeUpdate();
+            if(linhasAfetadas>0){
+               retorno = true;
             }
-
+            
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex.getMessage());
+            
         }
-
-        return lista;
+        
+        return retorno;
     }
     
     public static boolean excluir(int id){
