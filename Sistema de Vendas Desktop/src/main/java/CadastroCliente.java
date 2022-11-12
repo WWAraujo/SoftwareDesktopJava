@@ -390,6 +390,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                 boolean retorno = ClienteDAO.salvar(objCadastroCliente);
                 if (retorno) {
                     JOptionPane.showMessageDialog(this, "Cliente anotado na agenda!");
+                    objCadastroCliente = null;
                 } else {
                     JOptionPane.showMessageDialog(this, "Ou esse cliente está passando o CPF de outra pessoa!\n"
                             + "Ou nossa agenda está trancada no momento!");

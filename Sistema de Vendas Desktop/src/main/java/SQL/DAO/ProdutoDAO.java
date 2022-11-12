@@ -19,7 +19,7 @@ public class ProdutoDAO {
     
     public static String url = "jdbc:mysql://localhost:3306/lojaWRS";
     public static String login = "root";
-    public static String senha = "";
+    public static String senha = "P@$$w0rd";
 
     public static boolean salvar(Produto obj) {
         
