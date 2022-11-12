@@ -394,10 +394,12 @@ public class CadastroCliente extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(this, "Ou esse cliente está passando o CPF de outra pessoa!\n"
                             + "Ou nossa agenda está trancada no momento!");
+                    objCadastroCliente = null;
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Digite todos os campos obrigatorios:\n "
                         + "- Nome\n- CPF\n- Data de Nascimento!");
+                objCadastroCliente = null;
             }
         }
     }//GEN-LAST:event_btnSalvarCliActionPerformed
