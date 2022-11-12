@@ -19,6 +19,7 @@ public class Produto {
     public Produto() {
     }
 
+    
     public Produto(String nomeProd, double precoProd, String tipoProd,
             String tamanhoProd, String marcaProd, int quantidadeProd, String descricaoProd) {
         this.idProd = idProd;
@@ -35,64 +36,66 @@ public class Produto {
         return idProd;
     }
 
+    public void setIdProd(int idProd) {
+        this.idProd = idProd;
+    }
+
     public String getNomeProd() {
         return nomeProd;
+    }
+
+    public void setNomeProd(String nomeProd) {
+        this.nomeProd = nomeProd;
     }
 
     public double getPrecoProd() {
         return precoProd;
     }
 
+    public void setPrecoProd(double precoProd) {
+        this.precoProd = precoProd;
+    }
+
     public String getTipoProd() {
         return tipoProd;
+    }
+
+    public void setTipoProd(String tipoProd) {
+        this.tipoProd = tipoProd;
     }
 
     public String getTamanhoProd() {
         return tamanhoProd;
     }
 
+    public void setTamanhoProd(String tamanhoProd) {
+        this.tamanhoProd = tamanhoProd;
+    }
+
     public String getMarcaProd() {
         return marcaProd;
+    }
+
+    public void setMarcaProd(String marcaProd) {
+        this.marcaProd = marcaProd;
     }
 
     public int getQuantidadeProd() {
         return quantidadeProd;
     }
 
+    public void setQuantidadeProd(int quantidadeProd) {
+        this.quantidadeProd = quantidadeProd;
+    }
+
     public String getDescricaoProd() {
         return descricaoProd;
     }
 
-    public void setIdProd() {
-        this.idProd = idProd;
-    }
-
-    public void setNomeProd() {
-        this.nomeProd = nomeProd;
-    }
-
-    public void setPrecoProd() {
-        this.precoProd = precoProd;
-    }
-
-    public void setTipoProd() {
-        this.tipoProd = tipoProd;
-    }
-
-    public void setTamanhoProd() {
-        this.tamanhoProd = tamanhoProd;
-    }
-
-    public void setMarcaProd() {
-        this.marcaProd = marcaProd;
-    }
-
-    public void setQuantidadeProd() {
-        this.quantidadeProd = quantidadeProd;
-    }
-
-    public void setDescricaoProd() {
+    public void setDescricaoProd(String descricaoProd) {
         this.descricaoProd = descricaoProd;
     }
+
+
 
 }

@@ -18,7 +18,7 @@ public class ClienteDAO {
 
     public static String url = "jdbc:mysql://localhost:3306/lojaWRS";
     public static String login = "root";
-    public static String senha = "P@$$w0rd";
+    public static String senha = "";
 
     public static boolean salvar(Cliente obj) {
 
@@ -32,7 +32,14 @@ public class ClienteDAO {
             conexao = DriverManager.getConnection(url,login,senha);
             
             PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO lojawrs.cliente "
-                    + "(nome_cli,cpf_cli,data_nascimento_cli,celular_cli,estadoCivil_cli,sexo_cli,endereco_cli,email_cli) "
+                    + "(nome_cli,"
+                    + "cpf_cli,"
+                    + "data_nascimento_cli,"
+                    + "celular_cli,"
+                    + "estadoCivil_cli,"
+                    + "sexo_cli,"
+                    + "endereco_cli,"
+                    + "email_cli) "
                     + "VALUES(?,?,?,?,?,?,?,?)");
             comandoSQL.setString(1,obj.getNomeCliente());
             comandoSQL.setString(2,obj.getCPFCliente());
@@ -67,22 +74,22 @@ public class ClienteDAO {
             conexao = DriverManager.getConnection(url,login,senha);
             PreparedStatement comandoSQL = conexao.prepareStatement("UPDATE cliente SET "
                     + "nome_cli=?, "
-                    + "cpf_cli=?, "
-                    + "data_nascimento_cli=?, "
+ //                 + "cpf_cli=?, "
                     + "celular_cli=?, "
-                    + "estadoCivil_cli=?, "
-                    + "sexo_cli=? "
                     + "endereco_cli=?, "
                     + "email_cli=?, "
+                    + "estadoCivil_cli=?, "
+                    + "data_nascimento_cli=?, "
+                    + "sexo_cli=? "
                     + "where cod_cli = "+id+"");
             comandoSQL.setString(1,obj.getNomeCliente());
-            comandoSQL.setString(2,obj.getCPFCliente());
-            comandoSQL.setString(3,obj.getAniverCliente());
-            comandoSQL.setString(4,obj.getCelularCliente());
+//            comandoSQL.setString(2,obj.getCPFCliente());
+            comandoSQL.setString(2,obj.getCelularCliente());
+            comandoSQL.setString(3,obj.getEnderecoCliente());
+            comandoSQL.setString(4,obj.getEmailCliente());
             comandoSQL.setString(5,obj.getEstadoCivil());
-            comandoSQL.setString(6,obj.getSexoCliente());
-            comandoSQL.setString(7,obj.getEnderecoCliente());
-            comandoSQL.setString(8,obj.getEmailCliente());
+            comandoSQL.setString(6,obj.getAniverCliente());
+            comandoSQL.setString(7,obj.getSexoCliente());
             
             int linhasAfetadas = comandoSQL.executeUpdate();
             if(linhasAfetadas>0){

@@ -47,5 +47,4 @@ INSERT INTO lojawrs.produto (nome_prod,preco_prod,tipo_prod,tamanho_prod,marca_p
 		VALUES('Wallace Teste1',591.5,'blusa','GG','Nike',10,'teste'),
         ('Wallace Teste2',59,'blusas','G','',18,'');
         
-select * from produto;
-drop table produto;
+

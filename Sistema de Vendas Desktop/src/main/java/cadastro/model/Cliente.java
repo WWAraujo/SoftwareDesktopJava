@@ -53,6 +53,17 @@ public class Cliente {
         this.enderecoCliente = enderecoCliente;
         this.emailCliente = emailCliente;
     }
+
+    public Cliente(int idCliente, String nomeCliente, String aniverCliente, String celularCliente, String estadoCivil, String sexoCliente, String enderecoCliente, String emailCliente) {
+        this.idCliente = idCliente;
+        this.nomeCliente = nomeCliente;
+        this.aniverCliente = aniverCliente;
+        this.celularCliente = celularCliente;
+        this.estadoCivil = estadoCivil;
+        this.sexoCliente = sexoCliente;
+        this.enderecoCliente = enderecoCliente;
+        this.emailCliente = emailCliente;
+    }
     
     public int getIdCliente(){
         return idCliente;

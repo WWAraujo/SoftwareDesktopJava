@@ -2,6 +2,7 @@
 import SQL.DAO.ClienteDAO;
 import cadastro.model.Cliente;
 import com.toedter.calendar.JDateChooser;
+import java.text.ParseException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,25 +15,50 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CadastroCliente extends javax.swing.JFrame {
 
+    /**
+     * Declarando o objeto que entra no modo de cadastro
+     */
     Cliente objCadastroCliente = null;
-    Cliente objPesquisarCliente = null;
+
+    /**
+     * Declarando o objeto que entra no modo de alteração do cliente.
+     */
     Cliente objAlterarCliente = null;
 
     /**
-     * Creates new form CadastroCliente
+     * Modo de criar novo usário
      */
     public CadastroCliente() {
+        //Iniciando todos os componentes 
         initComponents();
+        //Quando abrir a tela, colocar no meio da tela
         this.setLocationRelativeTo(null);
     }
 
-    public CadastroCliente(Cliente obj) {
+    /**
+     * Modo de alteração do cliente
+     */
+    public CadastroCliente(Cliente obj) throws ParseException {
+        //Iniciando todos os componentes 
         initComponents();
-        this.objCadastroCliente = obj;
+        //Quando abrir a tela, colocar no meio da tela
+        this.setLocationRelativeTo(null);
 
-        //Atribuindo os valores do objeto aos campos do formulário
-        this.txtNomeCliente.setText(String.valueOf(obj.getNomeCliente()));
-        this.txtCPFCliente.setText(String.valueOf(obj.getCPFCliente()));
+        //Atribuindo os valores do objeto aos campos do formulário para fazer as alterações. 
+        lblID.setText(String.valueOf(obj.getIdCliente()));
+        txtNomeCliente.setText(String.valueOf(obj.getNomeCliente()));
+        txtCPFCliente.setText(String.valueOf(obj.getCPFCliente()));
+        //Convertendo uma String data para mostrar no calendar
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        Date dataFormatada = formato.parse(obj.getAniverCliente());
+        txtNascimento.setDate(dataFormatada);
+
+        //formatando o combo box
+        cbxEstadoCivil.setSelectedItem(obj.getAniverCliente());
+        txtEnderecoCliente.setText(String.valueOf(obj.getEnderecoCliente()));
+        txtEmailCliente.setText(String.valueOf(obj.getEmailCliente()));
+        txtTelefoneCelularCliente.setText(String.valueOf(obj.getCelularCliente()));
+        cbxSexo.setSelectedItem(obj.getSexoCliente());
 
     }
 
@@ -68,7 +94,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         btnAlterarCli = new javax.swing.JButton();
         txtNascimento = new com.toedter.calendar.JDateChooser();
         cbxSexo = new javax.swing.JComboBox<>();
-        jLabel10 = new javax.swing.JLabel();
+        lblID = new javax.swing.JLabel();
         cbxEstadoCivil = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -184,8 +210,8 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         cbxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Feminino", "Masculino", "Transgênero", "Neutro", "Não binário" }));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel10.setText("*****");
+        lblID.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblID.setText("0");
 
         cbxEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Solteiro", "Casado", "Separado", "Divorciado", "Viúvo", " " }));
 
@@ -220,7 +246,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cbxEstadoCivil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
+                                .addComponent(lblID)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtTelefoneCelularCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -250,7 +276,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel10))
+                    .addComponent(lblID))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtNomeCliente)
@@ -348,9 +374,9 @@ public class CadastroCliente extends javax.swing.JFrame {
             Date dataNasci = (txtNascimento.getDate());
             //Formatando o campo data de aniversário.
             String dataNascimentoFormatada = null;
-            if (dataNasci != null){
-            SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
-            dataNascimentoFormatada = formatador.format(dataNasci);
+            if (dataNasci != null) {
+                SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
+                dataNascimentoFormatada = formatador.format(dataNasci);
             }
             String celularCliente = String.valueOf(txtTelefoneCelularCliente.getText());
             String estadoCivil = String.valueOf(cbxEstadoCivil.getSelectedItem());
@@ -422,65 +448,73 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPesqueisarCliActionPerformed
 
     private void btnAlterarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarCliActionPerformed
-        
+
+        int id = Integer.parseInt(lblID.getText() + "");
         //Preparando objeto para aletar cadastro no banco de dados
         if (this.objAlterarCliente == null) {
-// como pegar essa informação?
-            int id = Integer.parseInt(jLabel10.getText()+"");
-            String nomeCliente = String.valueOf(txtNomeCliente.getText());
-            String cpfCliente = String.valueOf(txtCPFCliente.getText());
-            Date dataNasci = (txtNascimento.getDate());
-            //Formatando o campo data de aniversário.
-            String dataNascimentoFormatada = null;
-            if (dataNasci != null){
-            SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
-            dataNascimentoFormatada = formatador.format(dataNasci);
-            }
-            String celularCliente = String.valueOf(txtTelefoneCelularCliente.getText());
-            String estadoCivil = String.valueOf(cbxEstadoCivil.getSelectedItem());
-            String sexoCliente = String.valueOf(cbxSexo.getSelectedItem());
-            String enderecoCliente = String.valueOf(txtEnderecoCliente.getText());
-            String emailCliente = String.valueOf(txtEmailCliente.getText());
 
-            // Validar nome
-            if (nomeCliente.equals("")) {
-                nomeCliente = null;
-            }
-            //Validando se o CPF foi digitado 
-            if (cpfCliente.equals("   .   .   -  ")) {
-                cpfCliente = null;
-            }
+            if (id > 0) {
+                String nomeCliente = String.valueOf(txtNomeCliente.getText());
+                String cpfCliente = String.valueOf(txtCPFCliente.getText());
+                Date dataNasci = (txtNascimento.getDate());
+                //Formatando o campo data de aniversário.
+                String dataNascimentoFormatada = null;
+                if (dataNasci != null) {
+                    SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
+                    dataNascimentoFormatada = formatador.format(dataNasci);
+                }
+                String celularCliente = String.valueOf(txtTelefoneCelularCliente.getText());
+                String estadoCivil = String.valueOf(cbxEstadoCivil.getSelectedItem());
+                String sexoCliente = String.valueOf(cbxSexo.getSelectedItem());
+                String enderecoCliente = String.valueOf(txtEnderecoCliente.getText());
+                String emailCliente = String.valueOf(txtEmailCliente.getText());
 
-            //Validando de o Estado Civil foi selecionado
-            if (estadoCivil.equals("Selecione...")) {
-                estadoCivil = null;
-            }
+                // Validar nome
+                if (nomeCliente.equals("")) {
+                    nomeCliente = null;
+                }
+                //Validando se o CPF foi digitado 
+                if (cpfCliente.equals("   .   .   -  ")) {
+                    cpfCliente = null;
+                }
 
-            //Validando de o Sexo foi selecionado
-            if (sexoCliente.equals("Selecione...")) {
-                sexoCliente = null;
-            }
+                //Validando de o Estado Civil foi selecionado
+                if (estadoCivil.equals("Selecione...")) {
+                    estadoCivil = null;
+                }
 
-            //validar o telefone 
-            if (celularCliente.equals("(  )      -    ")) {
-                celularCliente = null;
-            }
+                //Validando de o Sexo foi selecionado
+                if (sexoCliente.equals("Selecione...")) {
+                    sexoCliente = null;
+                }
 
-            //Conferindo de o Usuário inseriu Nome, CPF, Data de Nascimento antes de chamar o DAO.
-            if (nomeCliente != null && cpfCliente != null && dataNascimentoFormatada != null) {
+                //validar o telefone 
+                if (celularCliente.equals("(  )      -    ")) {
+                    celularCliente = null;
+                }
+
+                //Conferindo de o Usuário inseriu Nome, CPF, Data de Nascimento antes de chamar o DAO.
+                if (nomeCliente != null && cpfCliente != null && dataNascimentoFormatada != null) {
 
                 objAlterarCliente = new Cliente(nomeCliente, cpfCliente, dataNascimentoFormatada, celularCliente,
-                        estadoCivil, sexoCliente, enderecoCliente, emailCliente);
+                                           estadoCivil, sexoCliente, enderecoCliente, emailCliente);
+                    
                 boolean retorno = ClienteDAO.alterarCliente(objAlterarCliente, id);
-                if (retorno) {
-                    JOptionPane.showMessageDialog(this, "Cliente anotado na agenda!");
+                    if (retorno) {
+                        JOptionPane.showMessageDialog(this, "Cliente alterado com sucesso!");
+                        objAlterarCliente = null;
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Esse CPF já está cadastrado! \n\t Tente outro");
+                        objAlterarCliente = null;
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(this, "Ou esse cliente está passando o CPF de outra pessoa!\n"
-                            + "Ou nossa agenda está trancada no momento!");
+                    JOptionPane.showMessageDialog(this, "Digite todos os campos obrigatorios:\n "
+                            + "- Nome\n- CPF\n- Data de Nascimento!");
+                    objAlterarCliente = null;
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Digite todos os campos obrigatorios:\n "
-                        + "- Nome\n- CPF\n- Data de Nascimento!");
+                JOptionPane.showMessageDialog(this, "Selecione um cliente na outra tela");
+                objAlterarCliente = null;
             }
         }
     }//GEN-LAST:event_btnAlterarCliActionPerformed
@@ -548,7 +582,6 @@ public class CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxEstadoCivil;
     private javax.swing.JComboBox<String> cbxSexo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -563,6 +596,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblID;
     private javax.swing.JFormattedTextField txtCPFCliente;
     private javax.swing.JTextField txtEmailCliente;
     private javax.swing.JTextField txtEnderecoCliente;

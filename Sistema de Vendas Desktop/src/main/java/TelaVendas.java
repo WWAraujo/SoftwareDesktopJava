@@ -316,13 +316,10 @@ public class TelaVendas extends javax.swing.JFrame {
 
         tblCompra.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Nome", "Código", "Quantidade", "Valor"
+                "Código", "Nome", "Quantidade", "Valor"
             }
         ));
         jScrollPane2.setViewportView(tblCompra);

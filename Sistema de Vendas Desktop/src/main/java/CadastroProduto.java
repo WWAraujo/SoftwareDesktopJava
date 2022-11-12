@@ -263,11 +263,14 @@ public class CadastroProduto extends javax.swing.JFrame {
                 boolean retorno = ProdutoDAO.salvar(objCadastroProduto);
                 if (retorno) {
                     JOptionPane.showMessageDialog(this, "Produto adicionado ao estoque!");
+                    objCadastroProduto = null;
                 } else {
                     JOptionPane.showMessageDialog(this, "Ops! Parece que o estoquista esta de folga!");
+                    objCadastroProduto = null;
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Digite o Nome, CPF e \n Informe a Data de Nascimento!");
+                objCadastroProduto = null;
             }
         }
     }//GEN-LAST:event_btnInserirProdActionPerformed

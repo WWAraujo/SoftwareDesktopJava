@@ -1,7 +1,10 @@
 
 import SQL.DAO.ClienteDAO;
 import cadastro.model.Cliente;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -9,7 +12,6 @@ import javax.swing.table.DefaultTableModel;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author wallace.waraujo
@@ -62,10 +64,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
         tblConsultaCli.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tblConsultaCli.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Codigo", "Nome", "CPF", "Telefone", "Endereço", "E-mail", "Estado Civil", "Data Nascimento", "Sexo"
@@ -158,10 +157,9 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConsultaCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaCliActionPerformed
-        
+
         //Chamando a pesquisa clienteDAO e passando em uma lista
         String nomeCliente = String.valueOf(txtConsultaCli.getText());
-        
 
         ArrayList<Cliente> lista = ClienteDAO.pesquisarNome(nomeCliente);
         DefaultTableModel modelo = (DefaultTableModel) tblConsultaCli.getModel();
@@ -170,20 +168,22 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
         modelo.setRowCount(0);
         //Atualizar ou Preencher tabela
         for (Cliente item : lista) {
-            modelo.addRow(new String[]{ String.valueOf(item.getIdCliente()),
-                                        String.valueOf(item.getNomeCliente()),
-                                        String.valueOf(item.getCPFCliente()),
-                                        String.valueOf(item.getEnderecoCliente()),
-                                        String.valueOf(item.getEmailCliente()),
-                                        String.valueOf(item.getEstadoCivil()),
-                                        String.valueOf(item.getAniverCliente()),
-                                        String.valueOf(item.getSexoCliente()),
-            });
+            modelo.addRow(new String[]{
+                String.valueOf(item.getIdCliente()),
+                String.valueOf(item.getNomeCliente()),
+                String.valueOf(item.getCPFCliente()),
+                String.valueOf(item.getCelularCliente()),
+                String.valueOf(item.getEnderecoCliente()),
+                String.valueOf(item.getEmailCliente()),
+                String.valueOf(item.getEstadoCivil()),
+                String.valueOf(item.getAniverCliente()),
+                String.valueOf(item.getSexoCliente()),});
+            
         }
     }//GEN-LAST:event_btnConsultaCliActionPerformed
 
     private void btnExcluirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirClienteActionPerformed
-        
+
         int indiceLinha = tblConsultaCli.getSelectedRow();
         int id = 0;
         if (indiceLinha >= 0) {
@@ -194,8 +194,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Selecione uma linha");
         }
 //Precisa fazer essa linha funcionar 
-        
-        
+
         boolean retorno = ClienteDAO.excluir(id);
         if (retorno) {
             JOptionPane.showMessageDialog(this, "Excluído com sucesso!");
@@ -213,8 +212,31 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarPesquisaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        CadastroCliente cadastro = new CadastroCliente();
-        cadastro.setVisible(true);
+        int linhaSelecionada = tblConsultaCli.getSelectedRow();
+
+        if (linhaSelecionada >= 0) {
+            Cliente obj = new Cliente();
+            obj.setIdCliente(Integer.parseInt(tblConsultaCli.getValueAt(linhaSelecionada, 0).toString()));
+            obj.setNomeCliente(String.valueOf(tblConsultaCli.getValueAt(linhaSelecionada, 1)));
+            obj.setCPFCliente(String.valueOf(tblConsultaCli.getValueAt(linhaSelecionada, 2)));
+            obj.setCelularCliente(String.valueOf(tblConsultaCli.getValueAt(linhaSelecionada, 3)));
+            obj.setEnderecoCliente(String.valueOf(tblConsultaCli.getValueAt(linhaSelecionada, 4)));
+            obj.setEmailCliente(String.valueOf(tblConsultaCli.getValueAt(linhaSelecionada, 5)));
+            obj.setEstadoCivil(String.valueOf(tblConsultaCli.getValueAt(linhaSelecionada, 6)));
+            obj.setAniverCliente(String.valueOf(tblConsultaCli.getValueAt(linhaSelecionada, 7)));
+            obj.setSexoCliente(String.valueOf(tblConsultaCli.getValueAt(linhaSelecionada, 8)));
+            
+            CadastroCliente cadastro;
+            try {
+                cadastro = new CadastroCliente(obj);
+                cadastro.setVisible(true);
+            } catch (ParseException ex) {
+                Logger.getLogger(TelaConsultaCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "Selecione uma linha");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
