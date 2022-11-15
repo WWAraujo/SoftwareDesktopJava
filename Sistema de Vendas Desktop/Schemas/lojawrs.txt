@@ -47,4 +47,34 @@ INSERT INTO lojawrs.produto (nome_prod,preco_prod,tipo_prod,tamanho_prod,marca_p
 		VALUES('Wallace Teste1',591.5,'blusa','GG','Nike',10,'teste'),
         ('Wallace Teste2',59,'blusas','G','',18,'');
         
+INSERT INTO lojawrs.produto (nome_prod,preco_prod,tipo_prod,tamanho_prod,
+marca_prod,quantidade_prod,descricao_prod) 
+		VALUES('Tênis Air Max Impact 3',399.99,'Masculino','40','Nike',10,'Lançamento'),
+				('Tênis Revolution 6',220.79,'Feminino','37','Nike',8,'Preto+Grafite'),
+                ('Tênis Infantil Court',220.79,'Unissex','30','Adidas',15,'Branco'),
+                ('Tênis Softride Enzo',199.99,'Masculino','41','Puma',15,'Preto'),
+                ('Tênis TRC BLAZE',379.90,'Feminino','38','Puma',15,'Silhueta baixa');
+        
+
+
+create table pedido(
+id_pedido int primary key auto_increment,
+fk_id_cliente int, 
+valor_total double not null,
+data_venda date not null,
+foreign key(fk_id_cliente) references cliente(cod_cli)
+);
+
+
+
+create table item_pedido(
+id_item_pedido int primary key auto_increment,
+fk_cid_pedido int,
+fk_cod_prod int,
+quantidade_prod int not null,
+valor_unitario double not null,
+foreign key(fk_cid_pedido) references pedido(id_pedido),
+foreign key(fk_cod_prod) references produto(cod_prod)
+);
+
 

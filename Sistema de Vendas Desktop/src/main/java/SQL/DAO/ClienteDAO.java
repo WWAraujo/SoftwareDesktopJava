@@ -137,7 +137,7 @@ public class ClienteDAO {
                     
                     lista.add(novoObjeto);
                 }
-            }
+            } 
 
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex.getMessage());
@@ -170,9 +170,7 @@ public class ClienteDAO {
                while(rs.next()){
                     Cliente novoObjeto = new Cliente();
                     novoObjeto.setCPFCliente(rs.getString("cpf_cli"));
-                    System.out.println(obj.getCPFCliente());
                     lista.add(novoObjeto);
-                    System.out.println(rs);
                 }
                 
             }

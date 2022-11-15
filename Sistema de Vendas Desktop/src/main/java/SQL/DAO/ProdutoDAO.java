@@ -56,4 +56,73 @@ public class ProdutoDAO {
         
         return retorno;
     }
+    
+    public static ArrayList<Produto> pesquisarID(int id) {
+        
+        Connection conexao = null;
+        boolean retorno = false;
+        
+        ArrayList<Produto> lista = new ArrayList<Produto>();
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            conexao = DriverManager.getConnection(url,login,senha);
+            
+            PreparedStatement comandoSQL = conexao.prepareStatement("select * from produto where cod_prod = "+id+";");
+            
+            ResultSet rs = comandoSQL.executeQuery();
+            if(rs != null){
+               retorno = true;
+               while(rs.next()){
+                    Produto novoObjeto = new Produto();
+                    novoObjeto.setIdProd(rs.getInt("cod_prod"));
+                    novoObjeto.setNomeProd(rs.getString("nome_prod"));
+                    novoObjeto.setQuantidadeProd(rs.getInt("quantidade_prod"));
+                    novoObjeto.setPrecoProd(rs.getDouble("preco_prod"));
+                    
+                    lista.add(novoObjeto);
+                }
+                
+            }
+            
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return lista;
+    }
+    
+    public static Produto pesquisarPorID(int id) {
+        
+        Connection conexao = null;
+        Produto produtoRetorno = null;
+        
+        ArrayList<Produto> lista = new ArrayList<Produto>();
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            conexao = DriverManager.getConnection(url,login,senha);
+            
+            PreparedStatement comandoSQL = conexao.prepareStatement("select * from produto where cod_prod = "+id+";");
+            
+            ResultSet rs = comandoSQL.executeQuery();
+            if(rs != null){
+               if(rs.next()){
+                    produtoRetorno = new Produto();
+                    produtoRetorno.setIdProd(rs.getInt("cod_prod"));
+                    produtoRetorno.setNomeProd(rs.getString("nome_prod"));
+                    produtoRetorno.setQuantidadeProd(rs.getInt("quantidade_prod"));
+                    produtoRetorno.setPrecoProd(rs.getDouble("preco_prod"));
+                }
+            }
+            
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return produtoRetorno;
+    }
+    
 }

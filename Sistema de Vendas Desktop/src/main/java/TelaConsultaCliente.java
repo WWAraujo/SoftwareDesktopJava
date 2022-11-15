@@ -178,7 +178,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
                 String.valueOf(item.getEstadoCivil()),
                 String.valueOf(item.getAniverCliente()),
                 String.valueOf(item.getSexoCliente()),});
-            
+
         }
     }//GEN-LAST:event_btnConsultaCliActionPerformed
 
@@ -204,7 +204,26 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirClienteActionPerformed
 
     private void btnColocarCPFNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColocarCPFNotaActionPerformed
-        // TODO add your handling code here:
+
+        int linhaSelecionada = tblConsultaCli.getSelectedRow();
+
+        if (linhaSelecionada >= 0) {
+            Cliente obj = new Cliente();
+            obj.setCPFCliente(String.valueOf(tblConsultaCli.getValueAt(linhaSelecionada, 2)));
+
+            TelaVendas cliente;
+            try {
+                cliente = new TelaVendas(obj);
+                cliente.setVisible(true);
+                this.dispose();
+                
+            } catch (ParseException ex) {
+                Logger.getLogger(TelaConsultaCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione uma linha");
+        }
     }//GEN-LAST:event_btnColocarCPFNotaActionPerformed
 
     private void btnCancelarPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPesquisaActionPerformed
@@ -212,7 +231,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarPesquisaActionPerformed
 
     private void btnAlterarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarCliActionPerformed
-        
+
         int linhaSelecionada = tblConsultaCli.getSelectedRow();
 
         if (linhaSelecionada >= 0) {
@@ -226,7 +245,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
             obj.setEstadoCivil(String.valueOf(tblConsultaCli.getValueAt(linhaSelecionada, 6)));
             obj.setAniverCliente(String.valueOf(tblConsultaCli.getValueAt(linhaSelecionada, 7)));
             obj.setSexoCliente(String.valueOf(tblConsultaCli.getValueAt(linhaSelecionada, 8)));
-            
+
             CadastroCliente cadastro;
             try {
                 cadastro = new CadastroCliente(obj);
@@ -234,8 +253,8 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
             } catch (ParseException ex) {
                 Logger.getLogger(TelaConsultaCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-        }else{
+
+        } else {
             JOptionPane.showMessageDialog(this, "Selecione uma linha");
         }
     }//GEN-LAST:event_btnAlterarCliActionPerformed
