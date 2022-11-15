@@ -837,7 +837,7 @@ public class TelaVendas extends javax.swing.JFrame {
 
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
 
-        //Preparando objeto para novo cadastro no banco de dados
+        //Preparando objeto para incluir novo cpf na compra
         if (this.objCadastroCliente == null) {
             
             String cpfCliente = String.valueOf(txtCPFCliente.getText());
@@ -849,11 +849,16 @@ public class TelaVendas extends javax.swing.JFrame {
 
             if (cpfCliente != null) {
                 objBuscaCliente = new Cliente(cpfCliente);
-                retorno = ClienteDAO.pesquisarCPF(objBuscaCliente);
-                txtCPFCliente.setText(retorno);
+                boolean retorno = ClienteDAO.pesquisarCPF(objBuscaCliente);
+                
+                 if (retorno) {
+                     JOptionPane.showMessageDialog(this, "Cliente encontrado");
+                     txtClienteAtual.setText(cpfCliente);
+                     txtCPFCliente.setText("");
+                     objBuscaCliente = null;
+                 }
             } else {
-                JOptionPane.showMessageDialog(this, "CPF não encontrado! \n"
-                        + "Busque pelo nome ou faça o cadastro. ");
+                JOptionPane.showMessageDialog(this, "CPF não encontrado\n! Busque pelo nome na Tela de consulta\n Ou realize um novo cadastro na Tela cadastro. ");
                 TelaConsultaCliente consulta = new TelaConsultaCliente();
                 consulta.setVisible(true);
             }

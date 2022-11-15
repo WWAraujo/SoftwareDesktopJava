@@ -146,7 +146,7 @@ public class ClienteDAO {
         return lista;
     }
 
-    public static boolean pesquisarCPF(String cpf) {
+    public static boolean pesquisarCPF(Cliente obj) {
 
         Connection conexao = null;
         boolean retorno = false;
@@ -159,13 +159,22 @@ public class ClienteDAO {
             conexao = DriverManager.getConnection(url, login, senha);
 
             //Comando sql
-            PreparedStatement comandoSQL = conexao.prepareStatement("select cpf_cli from cliente where cpf_cli = '?';");
-            comandoSQL.setString(1, cpf);
+            PreparedStatement comandoSQL = conexao.prepareStatement("select cpf_cli from cliente where cpf_cli = ?;");
+            comandoSQL.setString(1, obj.getCPFCliente());
             
             // Executar o comando e verificar se encontou o cpf
-            int linhasAfetadas = comandoSQL.executeUpdate();
-            if(linhasAfetadas>0){
+            ArrayList<Cliente> lista = new ArrayList<Cliente>();
+            ResultSet rs = comandoSQL.executeQuery();
+            if(rs != null){
                retorno = true;
+               while(rs.next()){
+                    Cliente novoObjeto = new Cliente();
+                    novoObjeto.setCPFCliente(rs.getString("cpf_cli"));
+                    System.out.println(obj.getCPFCliente());
+                    lista.add(novoObjeto);
+                    System.out.println(rs);
+                }
+                
             }
             
         } catch (ClassNotFoundException | SQLException ex) {
