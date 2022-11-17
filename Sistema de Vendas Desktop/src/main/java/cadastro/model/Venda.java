@@ -4,6 +4,8 @@
  */
 package cadastro.model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author T-Gamer
@@ -15,24 +17,16 @@ public class Venda {
     private int idCliente;
     private String cpfCliente;
     private int idProd;
-    private String nomeProd;
-    private double precoProd;
-    private String tipoProd;
-    private String tamanhoProd;
-    private String marcaProd;
-    private int quantidadeProd;
-    private String descricaoProd;
     
+    private ArrayList<Venda> listaItens = null;
+
     public Venda(){
-        
     }
 
     public Venda(int idNota, int valorNota, String cpfCliente, double precoProd, int quantidadeProd) {
         this.idNota = idNota;
         this.valorNota = valorNota;
         this.cpfCliente = cpfCliente;
-        this.precoProd = precoProd;
-        this.quantidadeProd = quantidadeProd;
     }
 
     public int getIdNota() {
@@ -75,61 +69,12 @@ public class Venda {
         this.idProd = idProd;
     }
 
-    public String getNomeProd() {
-        return nomeProd;
+    public ArrayList<Venda> getListaItens() {
+        return listaItens;
     }
 
-    public void setNomeProd(String nomeProd) {
-        this.nomeProd = nomeProd;
+    public void setListaItens(ArrayList<Venda> listaItens) {
+        this.listaItens = listaItens;
     }
-
-    public double getPrecoProd() {
-        return precoProd;
-    }
-
-    public void setPrecoProd(double precoProd) {
-        this.precoProd = precoProd;
-    }
-
-    public String getTipoProd() {
-        return tipoProd;
-    }
-
-    public void setTipoProd(String tipoProd) {
-        this.tipoProd = tipoProd;
-    }
-
-    public String getTamanhoProd() {
-        return tamanhoProd;
-    }
-
-    public void setTamanhoProd(String tamanhoProd) {
-        this.tamanhoProd = tamanhoProd;
-    }
-
-    public String getMarcaProd() {
-        return marcaProd;
-    }
-
-    public void setMarcaProd(String marcaProd) {
-        this.marcaProd = marcaProd;
-    }
-
-    public int getQuantidadeProd() {
-        return quantidadeProd;
-    }
-
-    public void setQuantidadeProd(int quantidadeProd) {
-        this.quantidadeProd = quantidadeProd;
-    }
-
-    public String getDescricaoProd() {
-        return descricaoProd;
-    }
-
-    public void setDescricaoProd(String descricaoProd) {
-        this.descricaoProd = descricaoProd;
-    }
-    
     
 }
