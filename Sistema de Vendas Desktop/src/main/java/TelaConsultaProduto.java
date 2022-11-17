@@ -40,6 +40,11 @@ public class TelaConsultaProduto extends javax.swing.JFrame {
         jLabel1.setText("Digite o codigo de barra:");
 
         btnConsultaProd.setText("Consultar");
+        btnConsultaProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaProdActionPerformed(evt);
+            }
+        });
 
         tblConsultaProd.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,6 +124,11 @@ public class TelaConsultaProduto extends javax.swing.JFrame {
         CadastroProduto cadastro = new CadastroProduto();
         cadastro.setVisible(true);
     }//GEN-LAST:event_btnCadastrarProdutoActionPerformed
+
+    private void btnConsultaProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaProdActionPerformed
+        
+        
+    }//GEN-LAST:event_btnConsultaProdActionPerformed
 
     /**
      * @param args the command line arguments
