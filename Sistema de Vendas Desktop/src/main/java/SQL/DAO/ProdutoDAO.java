@@ -125,4 +125,38 @@ public class ProdutoDAO {
         return produtoRetorno;
     }
     
+    public static ArrayList<Produto> pesquisartodos() {
+        
+        Connection conexao = null;
+        
+        ArrayList<Produto> lista = new ArrayList<Produto>();
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            conexao = DriverManager.getConnection(url,login,senha);
+            
+            PreparedStatement comandoSQL = conexao.prepareStatement("select * from produto;");
+            
+            ResultSet rs = comandoSQL.executeQuery();
+            if(rs != null){
+               while(rs.next()){
+                    Produto novoObjeto = new Produto();
+                    novoObjeto.setIdProd(rs.getInt("cod_prod"));
+                    novoObjeto.setNomeProd(rs.getString("nome_prod"));
+                    novoObjeto.setPrecoProd(rs.getDouble("preco_prod"));
+                    novoObjeto.setQuantidadeProd(rs.getInt("quantidade_prod"));
+                    
+                    lista.add(novoObjeto);
+                }
+                
+            }
+            
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return lista;
+    }
+    
 }
