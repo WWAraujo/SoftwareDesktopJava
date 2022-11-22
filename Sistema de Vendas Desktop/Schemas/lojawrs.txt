@@ -69,11 +69,11 @@ foreign key(fk_id_cliente) references cliente(cod_cli)
 
 create table item_pedido(
 id_item_pedido int primary key auto_increment,
-fk_cid_pedido int,
+fk_cod_pedido int,
 fk_cod_prod int,
 quantidade_prod int not null,
 valor_unitario double not null,
-foreign key(fk_cid_pedido) references pedido(id_pedido),
+foreign key(fk_cod_pedido) references pedido(id_pedido),
 foreign key(fk_cod_prod) references produto(cod_prod)
 );
 

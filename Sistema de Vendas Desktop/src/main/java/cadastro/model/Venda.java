@@ -17,6 +17,7 @@ public class Venda {
     private int idProd;
     private int qtdProd;
     private double valorTotalNota;
+    private double valorUnid;
     private String cpfCliente;
     private String formaPagamento;
     
@@ -70,6 +71,14 @@ public class Venda {
 
     public void setValorTotalNota(double valorTotalNota) {
         this.valorTotalNota = valorTotalNota;
+    }
+
+    public double getValorUnid() {
+        return valorUnid;
+    }
+
+    public void setValorUnid(double valorUnid) {
+        this.valorUnid = valorUnid;
     }
 
     public String getCpfCliente() {

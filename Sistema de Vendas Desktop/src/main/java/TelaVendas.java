@@ -835,7 +835,8 @@ public class TelaVendas extends javax.swing.JFrame {
 
                     item.setIdProd(Integer.parseInt(tblCompra.getValueAt(i, 0).toString()));
                     item.setQtdProd(Integer.parseInt(tblCompra.getValueAt(i, 2).toString()));
-                    item.setValorTotalNota(Double.parseDouble(tblCompra.getValueAt(i, 2).toString()));
+                    item.setValorUnid(Double.parseDouble(tblCompra.getValueAt(i, 3).toString()));
+                    item.setValorTotalNota(Double.parseDouble(lblTotalVenda.getText()));
                     item.setCpfCliente(String.valueOf(lblCPFAtual.getText()));
 
                     //Adiciono o objeto à listaItens
