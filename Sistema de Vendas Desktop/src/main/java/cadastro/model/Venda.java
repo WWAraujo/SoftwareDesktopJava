@@ -13,20 +13,23 @@ import java.util.ArrayList;
 public class Venda {
     
     private int idNota;
-    private int valorNota;
     private int idCliente;
-    private String cpfCliente;
     private int idProd;
+    private int qtdProd;
+    private double valorTotalNota;
+    private String cpfCliente;
+    private String formaPagamento;
     
     private ArrayList<Venda> listaItens = null;
 
     public Venda(){
     }
 
-    public Venda(int idNota, int valorNota, String cpfCliente, double precoProd, int quantidadeProd) {
+    public Venda(int idNota, double valorTotalNota, String cpfCliente, int quantidadeProd) {
         this.idNota = idNota;
-        this.valorNota = valorNota;
+        this.valorTotalNota = valorTotalNota;
         this.cpfCliente = cpfCliente;
+        this.qtdProd = quantidadeProd;
     }
 
     public int getIdNota() {
@@ -37,20 +40,36 @@ public class Venda {
         this.idNota = idNota;
     }
 
-    public int getValorNota() {
-        return valorNota;
-    }
-
-    public void setValorNota(int valorNota) {
-        this.valorNota = valorNota;
-    }
-
     public int getIdCliente() {
         return idCliente;
     }
 
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
+    }
+
+    public int getIdProd() {
+        return idProd;
+    }
+
+    public void setIdProd(int idProd) {
+        this.idProd = idProd;
+    }
+
+    public int getQtdProd() {
+        return qtdProd;
+    }
+
+    public void setQtdProd(int qtdProd) {
+        this.qtdProd = qtdProd;
+    }
+
+    public double getValorTotalNota() {
+        return valorTotalNota;
+    }
+
+    public void setValorTotalNota(double valorTotalNota) {
+        this.valorTotalNota = valorTotalNota;
     }
 
     public String getCpfCliente() {
@@ -61,12 +80,12 @@ public class Venda {
         this.cpfCliente = cpfCliente;
     }
 
-    public int getIdProd() {
-        return idProd;
+    public String getFormaPagamento() {
+        return formaPagamento;
     }
 
-    public void setIdProd(int idProd) {
-        this.idProd = idProd;
+    public void setFormaPagamento(String formaPagamento) {
+        this.formaPagamento = formaPagamento;
     }
 
     public ArrayList<Venda> getListaItens() {

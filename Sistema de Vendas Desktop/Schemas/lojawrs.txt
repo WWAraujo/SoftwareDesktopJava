@@ -61,7 +61,7 @@ create table pedido(
 id_pedido int primary key auto_increment,
 fk_id_cliente int, 
 valor_total double not null,
-data_venda date not null,
+data_venda timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 foreign key(fk_id_cliente) references cliente(cod_cli)
 );
 
