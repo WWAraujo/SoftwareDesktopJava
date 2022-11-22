@@ -2,9 +2,10 @@
 package cadastro.model;
 
 /**
- *
- * @author T-Gamer
+ *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
+ * 
  */
+
 public class Cliente {
     
     private int idCliente;

@@ -10,9 +10,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
- *
- * @author T-Gamer
+ *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
+ * 
  */
+
 public class PrepararBancoDAO {
 
     public static String url = "jdbc:mysql://localhost:3306/lojaWRS";

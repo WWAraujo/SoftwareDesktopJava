@@ -10,9 +10,10 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author T-Gamer
+ *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
+ * 
  */
+
 public class CadastroCliente extends javax.swing.JFrame {
 
     /**

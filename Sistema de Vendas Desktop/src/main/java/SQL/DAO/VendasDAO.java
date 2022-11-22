@@ -10,9 +10,10 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 /**
- *
- * @author wallace.waraujo
+ *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
+ * 
  */
+
 public class VendasDAO {
 
     public static String url = "jdbc:mysql://localhost:3306/lojaWRS";

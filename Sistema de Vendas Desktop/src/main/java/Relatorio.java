@@ -1,7 +1,7 @@
 
 /**
- *
- * @author rafin
+ *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
+ * 
  */
 public class Relatorio extends javax.swing.JFrame {
 

@@ -7,9 +7,10 @@ package cadastro.model;
 import java.util.ArrayList;
 
 /**
- *
- * @author T-Gamer
+ *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
+ * 
  */
+
 public class Venda {
     
     private int idNota;

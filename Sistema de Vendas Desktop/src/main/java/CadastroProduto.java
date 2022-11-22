@@ -6,8 +6,8 @@ import javax.swing.JOptionPane;
 
         
 /**
- *
- * @author T-Gamer
+ *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
+ * 
  */
 public class CadastroProduto extends javax.swing.JFrame {
     

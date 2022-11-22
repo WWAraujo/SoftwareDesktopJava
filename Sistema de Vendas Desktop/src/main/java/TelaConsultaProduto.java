@@ -4,15 +4,11 @@ import cadastro.model.Produto;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+/**
+ *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
+ * 
  */
 
-/**
- *
- * @author wallace.waraujo
- */
 public class TelaConsultaProduto extends javax.swing.JFrame {
 
     /**

@@ -12,9 +12,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author wallace.waraujo
+ *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
+ * 
  */
+
 public class ProdutoDAO {
     
     public static String url = "jdbc:mysql://localhost:3306/lojaWRS";
