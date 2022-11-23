@@ -20,7 +20,7 @@ public class VendasDAO {
 
     public static String url = "jdbc:mysql://localhost:3306/lojaWRS";
     public static String login = "root";
-    public static String senha = "";
+    public static String senha = "P@$$w0rd";
 
     public static boolean salvarnota(Venda obj) {
         boolean retorno = false;
@@ -45,9 +45,9 @@ public class VendasDAO {
             }
 
             //Salvando a nota simples
-            PreparedStatement comandoSQL = conexao.prepareStatement("insert into pedido (fk_id_cliente, valor_total) values (15,?);", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement comandoSQL = conexao.prepareStatement("insert into pedido (fk_id_cliente, valor_total) values (1,50);", Statement.RETURN_GENERATED_KEYS);
             //comandoSQL.setInt(1, obj.getIdCliente());
-            comandoSQL.setDouble(1, obj.getValorTotalNota());
+            //comandoSQL.setDouble(1, obj.getValorTotalNota());
 
             //Salvando a nota complementar
             int linhasAfetadas = comandoSQL.executeUpdate();
