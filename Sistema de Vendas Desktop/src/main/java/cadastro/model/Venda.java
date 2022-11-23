@@ -5,6 +5,7 @@
 package cadastro.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
@@ -21,6 +22,7 @@ public class Venda {
     private double valorUnid;
     private String cpfCliente;
     private String formaPagamento;
+    private String datavenda;
     
     private ArrayList<Venda> listaItens = null;
 
@@ -32,6 +34,13 @@ public class Venda {
         this.valorTotalNota = valorTotalNota;
         this.cpfCliente = cpfCliente;
         this.qtdProd = quantidadeProd;
+    }
+
+    public Venda(int idNota, int idCliente, double valorTotalNota, String datavenda) {
+        this.idNota = idNota;
+        this.idCliente = idCliente;
+        this.valorTotalNota = valorTotalNota;
+        this.datavenda = datavenda;
     }
 
     public int getIdNota() {
@@ -104,6 +113,14 @@ public class Venda {
 
     public void setListaItens(ArrayList<Venda> listaItens) {
         this.listaItens = listaItens;
+    }
+
+    public String getDatavenda() {
+        return datavenda;
+    }
+
+    public void setDatavenda(String datavenda) {
+        this.datavenda = datavenda;
     }
     
 }
