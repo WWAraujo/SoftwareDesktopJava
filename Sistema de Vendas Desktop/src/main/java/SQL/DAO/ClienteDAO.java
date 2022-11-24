@@ -164,14 +164,12 @@ public class ClienteDAO {
             comandoSQL.setString(1, obj.getCPFCliente());
             
             // Executar o comando e verificar se encontou o cpf
-            ArrayList<Cliente> lista = new ArrayList<Cliente>();
             ResultSet rs = comandoSQL.executeQuery();
             if(rs != null){
                retorno = true;
                while(rs.next()){
-                    Cliente novoObjeto = new Cliente();
-                    novoObjeto.setCPFCliente(rs.getString("cpf_cli"));
-                    lista.add(novoObjeto);
+                    obj.setCPFCliente(rs.getString("cpf_cli"));
+                    
                 }
                 
             }

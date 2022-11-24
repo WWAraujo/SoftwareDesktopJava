@@ -481,9 +481,11 @@ public class TelaVendas extends javax.swing.JFrame {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTotalVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addContainerGap(65, Short.MAX_VALUE))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(0, 135, Short.MAX_VALUE))
+                    .addComponent(lblTotalVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -832,9 +834,6 @@ public class TelaVendas extends javax.swing.JFrame {
 
     private void btnFinalizarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarCompraActionPerformed
 
-        //Crio o objeto Venda
-        Venda objNotaFiscal = new Venda();
-        
         //Resgato os produtos
         ArrayList<Venda> listaItens = new ArrayList<Venda>();
         if(tblCompra.getRowCount()>0){
@@ -843,15 +842,17 @@ public class TelaVendas extends javax.swing.JFrame {
                     item.setIdProd(Integer.parseInt(tblCompra.getValueAt(i, 0).toString()));
                     item.setQtdProd(Integer.parseInt(tblCompra.getValueAt(i, 2).toString()));
                     item.setValorUnid(Double.parseDouble(tblCompra.getValueAt(i, 3).toString()));
-                    item.setValorTotalNota((TotalVendas));
-                    item.setCpfCliente(String.valueOf(lblCPFAtual.getText()));
 
                     //Adiciono o objeto à listaItens
                     listaItens.add(item);
 
                 }
         }
-
+        
+        //Crio o objeto Venda
+        Venda objNotaFiscal = new Venda();
+        objNotaFiscal.setCpfCliente(lblCPFAtual.getText());
+        objNotaFiscal.setValorTotalNota(TotalVendas);
         objNotaFiscal.setListaItens(listaItens);
 
         boolean retorno = VendasDAO.salvarnota(objNotaFiscal);

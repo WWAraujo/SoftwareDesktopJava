@@ -33,21 +33,20 @@ public class VendasDAO {
             PreparedStatement comandoSQLid = conexao.prepareStatement("select cod_cli from cliente where cpf_cli = ?;");
             comandoSQLid.setString(1, obj.getCpfCliente());
             
-            ArrayList<Venda> lista = new ArrayList<Venda>();
+            //ArrayList<Venda> lista = new ArrayList<Venda>();
             ResultSet rs = comandoSQLid.executeQuery();
             
             if (rs != null) {
                 while(rs.next()){
-                    Venda novoObjeto = new Venda();
-                    novoObjeto.setIdCliente(rs.getInt("cod_cli"));
-                    lista.add(novoObjeto); 
+                    obj.setIdCliente(rs.getInt("cod_cli"));
+                    //lista.add(novoObjeto); 
                 }
             }
 
             //Salvando a nota simples
-            PreparedStatement comandoSQL = conexao.prepareStatement("insert into pedido (fk_id_cliente, valor_total) values (1,50);", Statement.RETURN_GENERATED_KEYS);
-            //comandoSQL.setInt(1, obj.getIdCliente());
-            //comandoSQL.setDouble(1, obj.getValorTotalNota());
+            PreparedStatement comandoSQL = conexao.prepareStatement("insert into pedido (fk_id_cliente, valor_total) values (?,?);", Statement.RETURN_GENERATED_KEYS);
+            comandoSQL.setInt(1, obj.getIdCliente());
+            comandoSQL.setDouble(2, obj.getValorTotalNota());
 
             //Salvando a nota complementar
             int linhasAfetadas = comandoSQL.executeUpdate();
@@ -72,12 +71,6 @@ public class VendasDAO {
                 }
             }
         
-
-            
-
-            
-            
-
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex.getMessage());
         }
