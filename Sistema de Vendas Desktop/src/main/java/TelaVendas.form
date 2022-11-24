@@ -9,17 +9,6 @@
             <Property name="text" type="java.lang.String" value="Menu"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="listCadastrarCliente">
-              <Properties>
-                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="F2"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Cadastrar Cliente "/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listCadastrarClienteActionPerformed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="abrirCaixa">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
@@ -34,7 +23,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="F8"/>
+                  <KeyStroke key="F7"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cadastro Produto"/>
               </Properties>
@@ -91,6 +80,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="F6"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Cliente"/>
               </Properties>
               <Events>
@@ -99,10 +91,24 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="F8"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Produto"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem5ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="F11"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Relatorio"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem7ActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -137,30 +143,28 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="btnAbrirCaixa" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCadastrarCliente" linkSize="17" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnCadastrarCliente" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton1" linkSize="17" min="-2" pref="175" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnFinalizarCompra" linkSize="17" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnFinalizarCompra" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton4" linkSize="17" min="-2" pref="170" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCancelarCompra" linkSize="17" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnCancelarCompra" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnRemoverItem" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnRemoverItem" linkSize="17" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jPanel1" max="32767" attributes="0"/>
-                          <Component id="jPanel11" max="32767" attributes="0"/>
+                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jPanel2" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="21" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -169,7 +173,6 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnAbrirCaixa" linkSize="7" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                   <Component id="btnCadastrarCliente" linkSize="7" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                   <Component id="btnCancelarCompra" linkSize="7" min="-2" pref="41" max="-2" attributes="0"/>
                   <Component id="btnRemoverItem" linkSize="7" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
@@ -671,7 +674,10 @@
               </Properties>
               <Events>
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtDinheiroFocusLost"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtDinheiroMouseExited"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDinheiroActionPerformed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDinheiroKeyPressed"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDinheiroKeyReleased"/>
               </Events>
             </Component>
           </SubComponents>
@@ -873,7 +879,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="135" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="139" max="32767" attributes="0"/>
                           </Group>
                           <Component id="lblTotalVenda" max="32767" attributes="0"/>
                       </Group>
@@ -887,7 +893,7 @@
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblTotalVenda" pref="39" max="32767" attributes="0"/>
+                      <Component id="lblTotalVenda" pref="49" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -972,17 +978,6 @@
         </Container>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btnAbrirCaixa">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Open-icon.png"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="   Abrir caixa [F2]"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbrirCaixaActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="btnCadastrarCliente">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -1021,7 +1016,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/carrinho-compra-delete.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Remover Item[F4]"/>
+        <Property name="text" type="java.lang.String" value="Remover Item da Lista [DEl]"/>
         <Property name="horizontalTextPosition" type="int" value="4"/>
       </Properties>
       <Events>
@@ -1033,7 +1028,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/produto.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Produtos [F8]"/>
+        <Property name="text" type="java.lang.String" value="Produtos [F7]"/>
         <Property name="horizontalTextPosition" type="int" value="4"/>
       </Properties>
       <Events>
@@ -1045,7 +1040,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Reports-icon.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Relatorio"/>
+        <Property name="text" type="java.lang.String" value="Relatorio [F11]"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>

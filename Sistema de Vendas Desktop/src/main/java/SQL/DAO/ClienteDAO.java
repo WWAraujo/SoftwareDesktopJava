@@ -19,7 +19,7 @@ public class ClienteDAO {
 
     public static String url = "jdbc:mysql://localhost:3306/lojaWRS";
     public static String login = "root";
-    public static String senha = "P@$$w0rd";
+    public static String senha = "";
 
     public static boolean salvar(Cliente obj) {
 
@@ -147,10 +147,10 @@ public class ClienteDAO {
         return lista;
     }
 
-    public static boolean pesquisarCPF(Cliente obj) {
+    public static int pesquisarCPF(String cpf) {
 
         Connection conexao = null;
-        boolean retorno = false;
+        int retorno = 0;
         
         try {
             //Chamar o acesso ao banco
@@ -160,18 +160,18 @@ public class ClienteDAO {
             conexao = DriverManager.getConnection(url, login, senha);
 
             //Comando sql
-            PreparedStatement comandoSQL = conexao.prepareStatement("select cpf_cli from cliente where cpf_cli = ?;");
-            comandoSQL.setString(1, obj.getCPFCliente());
+            PreparedStatement comandoSQL = conexao.prepareStatement("select * from cliente where cpf_cli like ?;");
+            comandoSQL.setString(1, cpf);
             
             // Executar o comando e verificar se encontou o cpfd
             ResultSet rs = comandoSQL.executeQuery();
             if(rs != null){
-               retorno = true;
-               while(rs.next()){
-                    obj.setCPFCliente(rs.getString("cpf_cli"));
-                    
+                while (rs.next()) {
+                    System.out.println(rs.getString("cod_cli"));
+                    retorno = rs.getInt("cod_cli");
                 }
-                
+            }else{
+                retorno = 0;
             }
             
         } catch (ClassNotFoundException | SQLException ex) {

@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
- * 
+ * @author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
+ *
  */
 public class TelaVendas extends javax.swing.JFrame {
 
@@ -92,7 +92,6 @@ public class TelaVendas extends javax.swing.JFrame {
         jPanel10 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         lblData = new javax.swing.JLabel();
-        btnAbrirCaixa = new javax.swing.JButton();
         btnCadastrarCliente = new javax.swing.JButton();
         btnFinalizarCompra = new javax.swing.JButton();
         btnCancelarCompra = new javax.swing.JButton();
@@ -105,7 +104,6 @@ public class TelaVendas extends javax.swing.JFrame {
         btnBuscarClienteNome = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         listAbrirCaixa = new javax.swing.JMenu();
-        listCadastrarCliente = new javax.swing.JMenuItem();
         abrirCaixa = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         listFinalizarCompra = new javax.swing.JMenuItem();
@@ -116,6 +114,7 @@ public class TelaVendas extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -366,9 +365,22 @@ public class TelaVendas extends javax.swing.JFrame {
                 txtDinheiroFocusLost(evt);
             }
         });
+        txtDinheiro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtDinheiroMouseExited(evt);
+            }
+        });
         txtDinheiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDinheiroActionPerformed(evt);
+            }
+        });
+        txtDinheiro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtDinheiroKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDinheiroKeyReleased(evt);
             }
         });
 
@@ -483,7 +495,7 @@ public class TelaVendas extends javax.swing.JFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addGap(0, 135, Short.MAX_VALUE))
+                        .addGap(0, 139, Short.MAX_VALUE))
                     .addComponent(lblTotalVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -493,7 +505,7 @@ public class TelaVendas extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblTotalVenda, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                .addComponent(lblTotalVenda, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
                 .addGap(14, 14, 14))
         );
 
@@ -574,14 +586,6 @@ public class TelaVendas extends javax.swing.JFrame {
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jPanel10, jPanel7, jPanel9});
 
-        btnAbrirCaixa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Open-icon.png"))); // NOI18N
-        btnAbrirCaixa.setText("   Abrir caixa [F2]");
-        btnAbrirCaixa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAbrirCaixaActionPerformed(evt);
-            }
-        });
-
         btnCadastrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/User-Clients-icon_1.png"))); // NOI18N
         btnCadastrarCliente.setText("   Cadastro Cliente [F5]");
         btnCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -607,7 +611,7 @@ public class TelaVendas extends javax.swing.JFrame {
         });
 
         btnRemoverItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/carrinho-compra-delete.png"))); // NOI18N
-        btnRemoverItem.setText("Remover Item[F4]");
+        btnRemoverItem.setText("Remover Item da Lista [DEl]");
         btnRemoverItem.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnRemoverItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -616,7 +620,7 @@ public class TelaVendas extends javax.swing.JFrame {
         });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produto.png"))); // NOI18N
-        jButton1.setText("Produtos [F8]");
+        jButton1.setText("Produtos [F7]");
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -625,7 +629,7 @@ public class TelaVendas extends javax.swing.JFrame {
         });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Reports-icon.png"))); // NOI18N
-        jButton4.setText("Relatorio");
+        jButton4.setText("Relatorio [F11]");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -697,15 +701,6 @@ public class TelaVendas extends javax.swing.JFrame {
 
         listAbrirCaixa.setText("Menu");
 
-        listCadastrarCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
-        listCadastrarCliente.setText("Cadastrar Cliente ");
-        listCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listCadastrarClienteActionPerformed(evt);
-            }
-        });
-        listAbrirCaixa.add(listCadastrarCliente);
-
         abrirCaixa.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
         abrirCaixa.setText("Cadastro Cliente");
         abrirCaixa.addActionListener(new java.awt.event.ActionListener() {
@@ -715,7 +710,7 @@ public class TelaVendas extends javax.swing.JFrame {
         });
         listAbrirCaixa.add(abrirCaixa);
 
-        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F8, 0));
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
         jMenuItem3.setText("Cadastro Produto");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -751,6 +746,7 @@ public class TelaVendas extends javax.swing.JFrame {
 
         jMenu1.setText("Consulta");
 
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
         jMenuItem4.setText("Cliente");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -759,6 +755,7 @@ public class TelaVendas extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem4);
 
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F8, 0));
         jMenuItem5.setText("Produto");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -766,6 +763,15 @@ public class TelaVendas extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem5);
+
+        jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F11, 0));
+        jMenuItem7.setText("Relatorio");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem7);
 
         jMenuBar1.add(jMenu1);
 
@@ -779,33 +785,33 @@ public class TelaVendas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAbrirCaixa)
-                        .addGap(18, 18, 18)
                         .addComponent(btnCadastrarCliente)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnFinalizarCompra)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnCancelarCompra)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btnRemoverItem))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCadastrarCliente, btnCancelarCompra, btnFinalizarCompra, btnRemoverItem, jButton1, jButton4});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAbrirCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCadastrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRemoverItem, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -822,7 +828,7 @@ public class TelaVendas extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAbrirCaixa, btnCadastrarCliente, btnCancelarCompra, btnFinalizarCompra, btnRemoverItem, jButton1, jButton4});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCadastrarCliente, btnCancelarCompra, btnFinalizarCompra, btnRemoverItem, jButton1, jButton4});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -836,19 +842,19 @@ public class TelaVendas extends javax.swing.JFrame {
 
         //Resgato os produtos
         ArrayList<Venda> listaItens = new ArrayList<Venda>();
-        if(tblCompra.getRowCount()>0){
-                for(int i=0;i<tblCompra.getRowCount();i++){
-                    Venda item = new Venda();
-                    item.setIdProd(Integer.parseInt(tblCompra.getValueAt(i, 0).toString()));
-                    item.setQtdProd(Integer.parseInt(tblCompra.getValueAt(i, 2).toString()));
-                    item.setValorUnid(Double.parseDouble(tblCompra.getValueAt(i, 3).toString()));
+        if (tblCompra.getRowCount() > 0) {
+            for (int i = 0; i < tblCompra.getRowCount(); i++) {
+                Venda item = new Venda();
+                item.setIdProd(Integer.parseInt(tblCompra.getValueAt(i, 0).toString()));
+                item.setQtdProd(Integer.parseInt(tblCompra.getValueAt(i, 2).toString()));
+                item.setValorUnid(Double.parseDouble(tblCompra.getValueAt(i, 3).toString()));
 
-                    //Adiciono o objeto à listaItens
-                    listaItens.add(item);
+                //Adiciono o objeto à listaItens
+                listaItens.add(item);
 
-                }
+            }
         }
-        
+
         //Crio o objeto Venda
         Venda objNotaFiscal = new Venda();
         objNotaFiscal.setCpfCliente(lblCPFAtual.getText());
@@ -856,12 +862,12 @@ public class TelaVendas extends javax.swing.JFrame {
         objNotaFiscal.setListaItens(listaItens);
 
         boolean retorno = VendasDAO.salvarnota(objNotaFiscal);
-        if (retorno){
+        if (retorno) {
             JOptionPane.showMessageDialog(this, "Nota gravada com sucesso!");
-        } else{
+        } else {
             JOptionPane.showMessageDialog(this, "Falha na gravação!");
         }
-        
+
     }//GEN-LAST:event_btnFinalizarCompraActionPerformed
 
     private void btnCancelarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCompraActionPerformed
@@ -873,19 +879,8 @@ public class TelaVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarCompraActionPerformed
 
     private void abrirCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirCaixaActionPerformed
-        TelaAbrirCaixa caixa = new TelaAbrirCaixa();
-        caixa.setVisible(true);
+
     }//GEN-LAST:event_abrirCaixaActionPerformed
-
-    private void btnAbrirCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirCaixaActionPerformed
-        TelaAbrirCaixa caixa = new TelaAbrirCaixa();
-        caixa.setVisible(true);
-    }//GEN-LAST:event_btnAbrirCaixaActionPerformed
-
-    private void listCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listCadastrarClienteActionPerformed
-        CadastroCliente cadastro = new CadastroCliente();
-        cadastro.setVisible(true);
-    }//GEN-LAST:event_listCadastrarClienteActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Relatorio relatorio = new Relatorio();
@@ -1007,31 +1002,27 @@ public class TelaVendas extends javax.swing.JFrame {
 
             String idCliente = "";
             if (cpfCliente != null) {
-                objBuscaCliente = new Cliente(cpfCliente);
-                boolean retorno = ClienteDAO.pesquisarCPF(objBuscaCliente);
+                int retorno = ClienteDAO.pesquisarCPF(cpfCliente);
 
-                if (retorno) {
+                if (retorno > 0) {
                     JOptionPane.showMessageDialog(this, "Cliente encontrado");
-                    lblCPFAtual.setText(cpfCliente);
-                    lblIDCliente.setText(idCliente);
+                    lblCPFAtual.setText("CPF: " + cpfCliente);
+                    lblIDCliente.setText(retorno + "");
                     txtCPFCliente.setText("");
                     objBuscaCliente = null;
+                } else {
+                    JOptionPane.showMessageDialog(this, "CPF não encontrado\n! Busque pelo nome na Tela de consulta\n Ou realize um novo cadastro na Tela cadastro. ");
+                    TelaConsultaCliente consulta = new TelaConsultaCliente();
+                    consulta.setVisible(true);
+                    objBuscaCliente = null;
                 }
-            } else {
-                JOptionPane.showMessageDialog(this, "CPF não encontrado\n! Busque pelo nome na Tela de consulta\n Ou realize um novo cadastro na Tela cadastro. ");
-                TelaConsultaCliente consulta = new TelaConsultaCliente();
-                consulta.setVisible(true);
-                objBuscaCliente = null;
             }
         }
     }//GEN-LAST:event_btnBuscarClienteCPFActionPerformed
 
     private void btnBuscarClienteNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteNomeActionPerformed
-        TelaConsultaCliente consulta = new TelaConsultaCliente();
-        consulta.setVisible(true);
-
-        //String cpf = new Cliente.cpfCliente();
-        //txtClienteAtual.setText(cpf);
+        TelaConsultaCliente consultaCli = new TelaConsultaCliente();
+        consultaCli.setVisible(true);
     }//GEN-LAST:event_btnBuscarClienteNomeActionPerformed
 
     private void btnConsultaProtudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaProtudoActionPerformed
@@ -1050,17 +1041,21 @@ public class TelaVendas extends javax.swing.JFrame {
             nomeProd = String.valueOf(item.getNomeProd());
         }
 
-        double total = quantidade * preco;
-        String subTotal = total + "";
-        if (!txtAddItem.getText().trim().equals("")) {
-            int id = Integer.parseInt(txtAddItem.getText());
-            Produto prod = ProdutoDAO.pesquisarPorID(idProduto);
+        if (quantidade <= quantidadeEstoque) {
+            double total = quantidade * preco;
+            String subTotal = total + "";
+            if (!txtAddItem.getText().trim().equals("")) {
+                int id = Integer.parseInt(txtAddItem.getText());
+                Produto prod = ProdutoDAO.pesquisarPorID(idProduto);
 
-            if (prod != null) {
-                lblNome.setText(prod.getNomeProd());
-                lblValorUnidade.setText(String.valueOf(prod.getPrecoProd()));
-                lblSubTotal.setText(subTotal);
+                if (prod != null) {
+                    lblNome.setText(prod.getNomeProd());
+                    lblValorUnidade.setText(String.valueOf(prod.getPrecoProd()));
+                    lblSubTotal.setText(subTotal);
+                }
             }
+        } else {
+            JOptionPane.showMessageDialog(this, "Só tem "+quantidadeEstoque+" no estoque");
         }
     }//GEN-LAST:event_btnConsultaProtudoActionPerformed
 
@@ -1069,13 +1064,7 @@ public class TelaVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDinheiroActionPerformed
 
     private void txtDinheiroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDinheiroFocusLost
-        if (!lblTotalVenda.equals(0)) {
-            double  valorTotal = (TotalVendas);
-            double  dinheiropg = Double.parseDouble(txtDinheiro.getText());
-            double troco = dinheiropg - valorTotal;
-            lblTroco2.setText(troco + "");
-            
-        }
+
     }//GEN-LAST:event_txtDinheiroFocusLost
 
     private void btnConsultaProtudoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnConsultaProtudoFocusLost
@@ -1083,8 +1072,31 @@ public class TelaVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultaProtudoFocusLost
 
     private void txtAddItemFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAddItemFocusLost
-    
+
     }//GEN-LAST:event_txtAddItemFocusLost
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        Relatorio relatorio = new Relatorio();
+        relatorio.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void txtDinheiroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDinheiroMouseExited
+
+    }//GEN-LAST:event_txtDinheiroMouseExited
+
+    private void txtDinheiroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDinheiroKeyPressed
+
+    }//GEN-LAST:event_txtDinheiroKeyPressed
+
+    private void txtDinheiroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDinheiroKeyReleased
+        if (!lblTotalVenda.equals(0)) {
+            double valorTotal = (TotalVendas);
+            double dinheiropg = Double.parseDouble(txtDinheiro.getText());
+            double troco = dinheiropg - valorTotal;
+            lblTroco2.setText(troco + "");
+
+        }
+    }//GEN-LAST:event_txtDinheiroKeyReleased
 
     /**
      * @param args the command line arguments
@@ -1124,7 +1136,6 @@ public class TelaVendas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem abrirCaixa;
-    private javax.swing.JButton btnAbrirCaixa;
     private javax.swing.JButton btnAddProduto;
     private javax.swing.JButton btnBuscarClienteCPF;
     private javax.swing.JButton btnBuscarClienteNome;
@@ -1156,6 +1167,7 @@ public class TelaVendas extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -1178,7 +1190,6 @@ public class TelaVendas extends javax.swing.JFrame {
     private javax.swing.JLabel lblTroco2;
     private javax.swing.JLabel lblValorUnidade;
     private javax.swing.JMenu listAbrirCaixa;
-    private javax.swing.JMenuItem listCadastrarCliente;
     private javax.swing.JMenuItem listFinalizarCompra;
     private javax.swing.JSpinner spinQuantidadeProduto;
     private javax.swing.JTable tblCompra;

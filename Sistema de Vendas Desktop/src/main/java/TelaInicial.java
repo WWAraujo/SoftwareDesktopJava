@@ -1,5 +1,4 @@
 
-import SQL.DAO.PrepararBancoDAO;
 import javax.swing.JOptionPane;
 /**
  *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
@@ -95,17 +94,6 @@ public class TelaInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        
-        //if (this.objPrepararBanco == null) {
-            
-        //    objPrepararBanco = new Banco();
-        //    boolean retorno = PrepararBancoDAO.CriarBanco(objPrepararBanco);
-        //    if (retorno) {
-        //        JOptionPane.showMessageDialog(this,"Banco criado com sucesso!");
-        //    } else {
-        //        JOptionPane.showMessageDialog(this, "Falha na gravação!");
-        //    }
-        //}
         
         Autorizacao autorizacao = new Autorizacao();
         autorizacao.setVisible(true);

@@ -35,7 +35,7 @@ public class Relatorio extends javax.swing.JFrame {
         lblTotalPeriodo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnRelatorio = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSintetico = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -44,8 +44,8 @@ public class Relatorio extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         cldInicio = new com.toedter.calendar.JDateChooser();
         cldFinal = new com.toedter.calendar.JDateChooser();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblValorTotalSintetico = new javax.swing.JLabel();
+        lblValorTotalAnalitico = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Relatório");
@@ -54,10 +54,10 @@ public class Relatorio extends javax.swing.JFrame {
 
         jLabel2.setText("Data Final :");
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRelatorio.setText("Buscar");
+        btnRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRelatorioActionPerformed(evt);
             }
         });
 
@@ -80,6 +80,9 @@ public class Relatorio extends javax.swing.JFrame {
         tblSintetico.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tblSinteticoKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblSinteticoKeyReleased(evt);
             }
         });
         jScrollPane1.setViewportView(tblSintetico);
@@ -108,11 +111,11 @@ public class Relatorio extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Valor total da compra:");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setText("0");
+        lblValorTotalSintetico.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblValorTotalSintetico.setText("0");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel6.setText("0");
+        lblValorTotalAnalitico.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblValorTotalAnalitico.setText("0");
 
         javax.swing.GroupLayout lblTotalPeriodoLayout = new javax.swing.GroupLayout(lblTotalPeriodo);
         lblTotalPeriodo.setLayout(lblTotalPeriodoLayout);
@@ -126,7 +129,7 @@ public class Relatorio extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel5)
+                        .addComponent(lblValorTotalSintetico)
                         .addGap(148, 148, 148))
                     .addGroup(lblTotalPeriodoLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
@@ -138,7 +141,7 @@ public class Relatorio extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cldFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(66, 66, 66)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane2))
                 .addContainerGap())
@@ -146,7 +149,7 @@ public class Relatorio extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6)
+                .addComponent(lblValorTotalAnalitico)
                 .addGap(150, 150, 150))
         );
 
@@ -157,7 +160,7 @@ public class Relatorio extends javax.swing.JFrame {
             .addGroup(lblTotalPeriodoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(lblTotalPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(lblTotalPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(cldInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -167,14 +170,14 @@ public class Relatorio extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(lblTotalPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
+                    .addComponent(lblValorTotalSintetico)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(lblTotalPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(lblValorTotalAnalitico))
                 .addGap(23, 23, 23))
         );
 
@@ -197,10 +200,10 @@ public class Relatorio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
 
-        double valorTotalData =0;
-        
+        double valorTotalData = 0;
+
         //Formatar a data inicio da busca.
         Date dataInicio = (cldInicio.getDate());
         String dataInicioFormatada = null;
@@ -235,20 +238,22 @@ public class Relatorio extends javax.swing.JFrame {
                     String.valueOf(item.getIdCliente()),
                     String.valueOf(item.getValorTotalNota()),
                     String.valueOf(item.getDatavenda()),});
-                valorTotalData += Double.parseDouble(String.valueOf(item.getQtdProd()));
+                valorTotalData += item.getValorTotalNota();
             }
-            lblTotalPeriodo.setToolTipText(String.valueOf(valorTotalData));
+            String vt = valorTotalData + "";
+            lblValorTotalSintetico.setText(vt);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnRelatorioActionPerformed
 
     private void tblSinteticoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSinteticoMouseClicked
 
         int linhaSelecionada = tblSintetico.getSelectedRow();
-        
+        double valorTotalanalitico = 0;
+
         if (linhaSelecionada >= 0) {
             Venda obj = new Venda();
-            obj.setIdNota(Integer.parseInt(tblSintetico.getValueAt(linhaSelecionada, 0).toString()+""));
-            
+            obj.setIdNota(Integer.parseInt(tblSintetico.getValueAt(linhaSelecionada, 0).toString() + ""));
+
             //Chamar o banco de dedados passando o numero da nota
             ArrayList<Venda> lista = VendasDAO.listaAnalitico(obj);
             DefaultTableModel modelo = (DefaultTableModel) tblAnalitico.getModel();
@@ -261,27 +266,28 @@ public class Relatorio extends javax.swing.JFrame {
                     String.valueOf(item.getIdProd()),
                     String.valueOf(item.getQtdProd()),
                     String.valueOf(item.getValorUnid()),});
-                
+                valorTotalanalitico += (item.getQtdProd() * item.getValorUnid());
             }
-        
-            
+            String vt = valorTotalanalitico + "";
+            lblValorTotalAnalitico.setText(vt);
         } else {
             JOptionPane.showMessageDialog(this, "Selecione uma linha");
         }
-        
+
     }//GEN-LAST:event_tblSinteticoMouseClicked
 
     private void tblAnaliticoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblAnaliticoKeyPressed
-        
+
     }//GEN-LAST:event_tblAnaliticoKeyPressed
 
     private void tblSinteticoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblSinteticoKeyPressed
         int linhaSelecionada = tblSintetico.getSelectedRow();
-        
+        double valorTotalanalitico = 0;
+
         if (linhaSelecionada >= 0) {
             Venda obj = new Venda();
-            obj.setIdNota(Integer.parseInt(tblSintetico.getValueAt(linhaSelecionada, 0).toString()+""));
-            
+            obj.setIdNota(Integer.parseInt(tblSintetico.getValueAt(linhaSelecionada, 0).toString() + ""));
+
             //Chamar o banco de dedados passando o numero da nota
             ArrayList<Venda> lista = VendasDAO.listaAnalitico(obj);
             DefaultTableModel modelo = (DefaultTableModel) tblAnalitico.getModel();
@@ -294,15 +300,20 @@ public class Relatorio extends javax.swing.JFrame {
                     String.valueOf(item.getIdProd()),
                     String.valueOf(item.getQtdProd()),
                     String.valueOf(item.getValorUnid()),});
-                
+                valorTotalanalitico += (item.getQtdProd() * item.getValorUnid());
             }
-        
-            
+            String vt = valorTotalanalitico + "";
+            lblValorTotalAnalitico.setText(vt);
+
         } else {
             JOptionPane.showMessageDialog(this, "Selecione uma linha");
         }
-        
+
     }//GEN-LAST:event_tblSinteticoKeyPressed
+
+    private void tblSinteticoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblSinteticoKeyReleased
+        
+    }//GEN-LAST:event_tblSinteticoKeyReleased
 
     /**
      * @param args the command line arguments
@@ -341,18 +352,18 @@ public class Relatorio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRelatorio;
     private com.toedter.calendar.JDateChooser cldFinal;
     private com.toedter.calendar.JDateChooser cldInicio;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel lblTotalPeriodo;
+    private javax.swing.JLabel lblValorTotalAnalitico;
+    private javax.swing.JLabel lblValorTotalSintetico;
     private javax.swing.JTable tblAnalitico;
     private javax.swing.JTable tblSintetico;
     // End of variables declaration//GEN-END:variables

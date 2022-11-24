@@ -12,65 +12,108 @@ import cadastro.model.Produto;
 import cadastro.model.Venda;
 
 /**
- *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
- * 
+ * @author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
+ *
  */
-
 public class VendasDAO {
 
     public static String url = "jdbc:mysql://localhost:3306/lojaWRS";
     public static String login = "root";
-    public static String senha = "P@$$w0rd";
+    public static String senha = "";
 
     public static boolean salvarnota(Venda obj) {
         boolean retorno = false;
-        
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conexao = DriverManager.getConnection(url, login, senha);
 
-            //Pegando o id do cliente
-            PreparedStatement comandoSQLid = conexao.prepareStatement("select cod_cli from cliente where cpf_cli = ?;");
-            comandoSQLid.setString(1, obj.getCpfCliente());
-            
-            //ArrayList<Venda> lista = new ArrayList<Venda>();
-            ResultSet rs = comandoSQLid.executeQuery();
-            
-            if (rs != null) {
-                while(rs.next()){
-                    obj.setIdCliente(rs.getInt("cod_cli"));
-                    //lista.add(novoObjeto); 
-                }
-            }
+            if (obj.getCpfCliente().equals("CPF NÃO INFORMADO")) {
+                
+                PreparedStatement comandoSQL = conexao.prepareStatement("insert into pedido (valor_total) values (?);", Statement.RETURN_GENERATED_KEYS);
+                comandoSQL.setDouble(1, obj.getValorTotalNota());
 
-            //Salvando a nota simples
-            PreparedStatement comandoSQL = conexao.prepareStatement("insert into pedido (fk_id_cliente, valor_total) values (?,?);", Statement.RETURN_GENERATED_KEYS);
-            comandoSQL.setInt(1, obj.getIdCliente());
-            comandoSQL.setDouble(2, obj.getValorTotalNota());
+                //Salvando a nota complementar
+                int linhasAfetadas = comandoSQL.executeUpdate();
+                if (linhasAfetadas > 0) {
+                    ResultSet rs = comandoSQL.getGeneratedKeys();
+                    if (rs.next()) {
+                        int idNota = rs.getInt(1);
+                        for (Venda item : obj.getListaItens()) {
+                            PreparedStatement comandoSQLItem = conexao.prepareStatement("insert into item_pedido "
+                                    + "(fk_cod_pedido,fk_cod_prod,quantidade_prod,valor_unitario)\n"
+                                    + "values (?,?,?,?);");
+                            comandoSQLItem.setInt(1, idNota);
+                            comandoSQLItem.setInt(2, item.getIdProd());
+                            comandoSQLItem.setInt(3, item.getQtdProd());
+                            comandoSQLItem.setDouble(4, item.getValorUnid());
 
-            //Salvando a nota complementar
-            int linhasAfetadas = comandoSQL.executeUpdate();
-            if (linhasAfetadas > 0) {
-                rs = comandoSQL.getGeneratedKeys();
-                if (rs .next()) {
-                    int idNota = rs.getInt(1);
-                    for (Venda item : obj.getListaItens()) {
-                        PreparedStatement comandoSQLItem = conexao.prepareStatement("insert into item_pedido "
-                                + "(fk_cod_pedido,fk_cod_prod,quantidade_prod,valor_unitario)\n" 
-                                +"values (?,?,?,?);");
-                        comandoSQLItem.setInt(1, idNota);
-                        comandoSQLItem.setInt(2, item.getIdProd());
-                        comandoSQLItem.setInt(3, item.getQtdProd());
-                        comandoSQLItem.setDouble(4,item.getValorUnid());
+                            int linhasAfetadasItem = comandoSQLItem.executeUpdate();
+                            if (linhasAfetadasItem > 0) {
+                                PreparedStatement comandoSQLDeleteItem = conexao.prepareStatement("update produto "
+                                        + "set quantidade_prod = quantidade_prod - ? where cod_prod = ? ;");
+                                comandoSQLDeleteItem.setInt(1, item.getQtdProd());
+                                comandoSQLDeleteItem.setInt(2, item.getIdProd());
 
-                        int linhasAfetadasItem = comandoSQLItem.executeUpdate();
-                        if(linhasAfetadasItem>0){
-                            retorno = true;
+                                int linhasAfetadasItemDelet = comandoSQLDeleteItem.executeUpdate();
+                                if (linhasAfetadasItemDelet > 0) {
+                                    retorno = true;
+                                }
+                            }
                         }
                     }
                 }
-            }
-        
+            } else {
+                //Pegando o id do cliente
+                PreparedStatement comandoSQLid = conexao.prepareStatement("select cod_cli from cliente where cpf_cli = ?;");
+                comandoSQLid.setString(1, obj.getCpfCliente());
+
+                //ArrayList<Venda> lista = new ArrayList<Venda>();
+                ResultSet rs = comandoSQLid.executeQuery();
+
+                if (rs != null) {
+                    while (rs.next()) {
+                        obj.setIdCliente(rs.getInt("cod_cli"));
+                    }
+                }
+            
+                //Salvando a nota simples
+                PreparedStatement comandoSQL = conexao.prepareStatement("insert into pedido (fk_id_cliente, valor_total) values (?,?);", Statement.RETURN_GENERATED_KEYS);
+                comandoSQL.setInt(1, obj.getIdCliente());
+                comandoSQL.setDouble(2, obj.getValorTotalNota());
+
+                //Salvando a nota complementar
+                int linhasAfetadas = comandoSQL.executeUpdate();
+                if (linhasAfetadas > 0) {
+                    rs = comandoSQL.getGeneratedKeys();
+                    if (rs.next()) {
+                        int idNota = rs.getInt(1);
+                        for (Venda item : obj.getListaItens()) {
+                            PreparedStatement comandoSQLItem = conexao.prepareStatement("insert into item_pedido "
+                                    + "(fk_cod_pedido,fk_cod_prod,quantidade_prod,valor_unitario)\n"
+                                    + "values (?,?,?,?);");
+                            comandoSQLItem.setInt(1, idNota);
+                            comandoSQLItem.setInt(2, item.getIdProd());
+                            comandoSQLItem.setInt(3, item.getQtdProd());
+                            comandoSQLItem.setDouble(4, item.getValorUnid());
+
+                            int linhasAfetadasItem = comandoSQLItem.executeUpdate();
+                            if (linhasAfetadasItem > 0) {
+                                PreparedStatement comandoSQLDeleteItem = conexao.prepareStatement("update produto "
+                                        + "set quantidade_prod = quantidade_prod - ? where cod_prod = ? ;");
+                                comandoSQLDeleteItem.setInt(1, item.getQtdProd());
+                                comandoSQLDeleteItem.setInt(2, item.getIdProd());
+
+                                int linhasAfetadasItemDelet = comandoSQLDeleteItem.executeUpdate();
+                                if (linhasAfetadasItemDelet > 0) {
+                                    retorno = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            } 
+
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -78,78 +121,76 @@ public class VendasDAO {
         return retorno;
     }
 
-    public static ArrayList<Venda> listaSintetico (String dtInicio, String dtFinal){
-        
+    public static ArrayList<Venda> listaSintetico(String dtInicio, String dtFinal) {
+
         Connection conexao = null;
         boolean retorno = false;
-        
+
         ArrayList<Venda> lista = new ArrayList<Venda>();
 
         try {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            conexao = DriverManager.getConnection(url,login,senha);
-            
-            
-            PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * FROM pedido\n" 
-                    +"WHERE data_venda BETWEEN '"+dtInicio+"' AND '"+dtFinal+" 23:59'");
+
+            conexao = DriverManager.getConnection(url, login, senha);
+
+            PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * FROM pedido\n"
+                    + "WHERE data_venda BETWEEN '" + dtInicio + "' AND '" + dtFinal + " 23:59'");
             // Executar o comando
             ResultSet rs = comandoSQL.executeQuery();
-            
+
             if (rs != null) {
-                while(rs.next()){
+                while (rs.next()) {
                     Venda novoObjeto = new Venda();
                     novoObjeto.setIdNota(rs.getInt("id_pedido"));
                     novoObjeto.setIdCliente(rs.getInt("fk_id_cliente"));
                     novoObjeto.setValorTotalNota(rs.getDouble("valor_total"));
                     novoObjeto.setDatavenda(rs.getString("data_venda"));
-                    
+
                     lista.add(novoObjeto);
                 }
-            } 
+            }
 
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return lista;
     }
-    
-    public static ArrayList<Venda> listaAnalitico (Venda obj){
-        
+
+    public static ArrayList<Venda> listaAnalitico(Venda obj) {
+
         Connection conexao = null;
         boolean retorno = false;
-        
+
         ArrayList<Venda> lista = new ArrayList<Venda>();
 
         try {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            conexao = DriverManager.getConnection(url,login,senha);
-            
-            
-            PreparedStatement comandoSQL = conexao.prepareStatement("select * from item_pedido where fk_cod_pedido like ?;" );
-            comandoSQL.setInt(1,obj.getIdNota());
-            
+
+            conexao = DriverManager.getConnection(url, login, senha);
+
+            PreparedStatement comandoSQL = conexao.prepareStatement("select * from item_pedido where fk_cod_pedido like ?;");
+            comandoSQL.setInt(1, obj.getIdNota());
+
             // Executar o comando
             ResultSet rs = comandoSQL.executeQuery();
-            
+
             if (rs != null) {
-                while(rs.next()){
+                while (rs.next()) {
                     Venda novoObjeto = new Venda();
                     novoObjeto.setIdProd(rs.getInt("fk_cod_prod"));
                     novoObjeto.setQtdProd(rs.getInt("quantidade_prod"));
                     novoObjeto.setValorUnid(rs.getDouble("valor_unitario"));
-                    
+
                     lista.add(novoObjeto);
                 }
-            } 
+            }
 
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return lista;
     }
-    
+
 }
