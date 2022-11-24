@@ -163,7 +163,7 @@ public class ClienteDAO {
             PreparedStatement comandoSQL = conexao.prepareStatement("select cpf_cli from cliente where cpf_cli = ?;");
             comandoSQL.setString(1, obj.getCPFCliente());
             
-            // Executar o comando e verificar se encontou o cpf
+            // Executar o comando e verificar se encontou o cpfd
             ResultSet rs = comandoSQL.executeQuery();
             if(rs != null){
                retorno = true;
