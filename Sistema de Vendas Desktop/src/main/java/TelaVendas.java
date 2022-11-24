@@ -82,7 +82,7 @@ public class TelaVendas extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         lblTroco2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblCompra = new javax.swing.JTable();
+        tblCompras = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         cbxFormaPagamento = new javax.swing.JComboBox<>();
@@ -435,8 +435,8 @@ public class TelaVendas extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        tblCompra.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        tblCompra.setModel(new javax.swing.table.DefaultTableModel(
+        tblCompras.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tblCompras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -444,7 +444,7 @@ public class TelaVendas extends javax.swing.JFrame {
                 "Código", "Produto", "Quantidade", "Valor Unid.", "Valor Total"
             }
         ));
-        jScrollPane2.setViewportView(tblCompra);
+        jScrollPane2.setViewportView(tblCompras);
 
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -842,12 +842,12 @@ public class TelaVendas extends javax.swing.JFrame {
 
         //Resgato os produtos
         ArrayList<Venda> listaItens = new ArrayList<Venda>();
-        if (tblCompra.getRowCount() > 0) {
-            for (int i = 0; i < tblCompra.getRowCount(); i++) {
+        if (tblCompras.getRowCount() > 0) {
+            for (int i = 0; i < tblCompras.getRowCount(); i++) {
                 Venda item = new Venda();
-                item.setIdProd(Integer.parseInt(tblCompra.getValueAt(i, 0).toString()));
-                item.setQtdProd(Integer.parseInt(tblCompra.getValueAt(i, 2).toString()));
-                item.setValorUnid(Double.parseDouble(tblCompra.getValueAt(i, 3).toString()));
+                item.setIdProd(Integer.parseInt(tblCompras.getValueAt(i, 0).toString()));
+                item.setQtdProd(Integer.parseInt(tblCompras.getValueAt(i, 2).toString()));
+                item.setValorUnid(Double.parseDouble(tblCompras.getValueAt(i, 3).toString()));
 
                 //Adiciono o objeto à listaItens
                 listaItens.add(item);
@@ -857,22 +857,27 @@ public class TelaVendas extends javax.swing.JFrame {
 
         //Crio o objeto Venda
         Venda objNotaFiscal = new Venda();
+        objNotaFiscal.setIdCliente(Integer.parseInt(lblIDCliente.getText()));
         objNotaFiscal.setCpfCliente(lblCPFAtual.getText());
         objNotaFiscal.setValorTotalNota(TotalVendas);
         objNotaFiscal.setListaItens(listaItens);
 
-        boolean retorno = VendasDAO.salvarnota(objNotaFiscal);
-        if (retorno) {
-            JOptionPane.showMessageDialog(this, "Nota gravada com sucesso!");
-        } else {
-            JOptionPane.showMessageDialog(this, "Falha na gravação!");
+        if (tblCompras.getRowCount() > 0) {
+            boolean retorno = VendasDAO.salvarnota(objNotaFiscal);
+            if (retorno) {
+                JOptionPane.showMessageDialog(this, "Nota gravada com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Falha na gravação!");
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Não encontrei produto na lista!");
         }
 
     }//GEN-LAST:event_btnFinalizarCompraActionPerformed
 
     private void btnCancelarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCompraActionPerformed
 
-        DefaultTableModel modelo = (DefaultTableModel) tblCompra.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) tblCompras.getModel();
 
         //Limpar a tabela
         modelo.setRowCount(0);
@@ -916,7 +921,7 @@ public class TelaVendas extends javax.swing.JFrame {
         double total = 0;
         // Pesquisando o porduto pelo id informado
         ArrayList<Produto> lista = ProdutoDAO.pesquisarID(idProduto);
-        DefaultTableModel modelo = (DefaultTableModel) tblCompra.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) tblCompras.getModel();
 
         for (Produto item : lista) {
             quantidadeEstoque = Integer.parseInt(String.valueOf(item.getQuantidadeProd()));
@@ -944,9 +949,9 @@ public class TelaVendas extends javax.swing.JFrame {
 
     private void btnRemoverItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverItemActionPerformed
 
-        int indiceLinha = tblCompra.getSelectedRow();
+        int indiceLinha = tblCompras.getSelectedRow();
         if (indiceLinha >= 0) {
-            DefaultTableModel modelo = (DefaultTableModel) tblCompra.getModel();
+            DefaultTableModel modelo = (DefaultTableModel) tblCompras.getModel();
             modelo.removeRow(indiceLinha);
         } else {
             JOptionPane.showMessageDialog(this, "Selecione o item!");
@@ -1055,7 +1060,7 @@ public class TelaVendas extends javax.swing.JFrame {
                 }
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Só tem "+quantidadeEstoque+" no estoque");
+            JOptionPane.showMessageDialog(this, "Só tem " + quantidadeEstoque + " no estoque");
         }
     }//GEN-LAST:event_btnConsultaProtudoActionPerformed
 
@@ -1192,7 +1197,7 @@ public class TelaVendas extends javax.swing.JFrame {
     private javax.swing.JMenu listAbrirCaixa;
     private javax.swing.JMenuItem listFinalizarCompra;
     private javax.swing.JSpinner spinQuantidadeProduto;
-    private javax.swing.JTable tblCompra;
+    private javax.swing.JTable tblCompras;
     private javax.swing.JTextField txtAddItem;
     private javax.swing.JFormattedTextField txtCPFCliente;
     private javax.swing.JFormattedTextField txtDinheiro;

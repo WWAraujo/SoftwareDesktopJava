@@ -28,7 +28,7 @@ public class VendasDAO {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conexao = DriverManager.getConnection(url, login, senha);
 
-            if (obj.getCpfCliente().equals("CPF NÃO INFORMADO")) {
+            if (obj.getCpfCliente().equals("CPF NÃO INFORMADO") || obj.getIdCliente() == 0) {
                 
                 PreparedStatement comandoSQL = conexao.prepareStatement("insert into pedido (valor_total) values (?);", Statement.RETURN_GENERATED_KEYS);
                 comandoSQL.setDouble(1, obj.getValorTotalNota());

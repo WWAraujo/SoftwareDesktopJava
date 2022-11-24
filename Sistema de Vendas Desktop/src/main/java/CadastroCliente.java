@@ -408,9 +408,17 @@ public class CadastroCliente extends javax.swing.JFrame {
             if (celularCliente.equals("(  )      -    ")) {
                 celularCliente = null;
             }
+            
+            if (enderecoCliente.equals("")) {
+                enderecoCliente = null;
+            }
+            
+            if (emailCliente.equals("")) {
+                emailCliente = null;
+            }
 
             //Conferindo de o Usuário inseriu Nome, CPF, Data de Nascimento antes de chamar o DAO.
-            if (nomeCliente != null && cpfCliente != null && dataNascimentoFormatada != null) {
+            if (nomeCliente != null && cpfCliente != null && sexoCliente != null && enderecoCliente != null && emailCliente != null) {
 
                 objCadastroCliente = new Cliente(nomeCliente, cpfCliente, dataNascimentoFormatada, celularCliente,
                         estadoCivil, sexoCliente, enderecoCliente, emailCliente);
