@@ -495,7 +495,7 @@ public class TelaVendas extends javax.swing.JFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addGap(0, 139, Short.MAX_VALUE))
+                        .addGap(0, 141, Short.MAX_VALUE))
                     .addComponent(lblTotalVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -505,7 +505,7 @@ public class TelaVendas extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblTotalVenda, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                .addComponent(lblTotalVenda, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
                 .addGap(14, 14, 14))
         );
 
@@ -721,14 +721,29 @@ public class TelaVendas extends javax.swing.JFrame {
 
         listFinalizarCompra.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F10, 0));
         listFinalizarCompra.setText("Finalizar compra");
+        listFinalizarCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listFinalizarCompraActionPerformed(evt);
+            }
+        });
         listAbrirCaixa.add(listFinalizarCompra);
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F12, 0));
         jMenuItem1.setText("Cacelar compra");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         listAbrirCaixa.add(jMenuItem1);
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_DELETE, 0));
         jMenuItem2.setText("Remover Item");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         listAbrirCaixa.add(jMenuItem2);
 
         jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_DOWN_MASK));
@@ -840,15 +855,26 @@ public class TelaVendas extends javax.swing.JFrame {
 
     private void btnFinalizarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarCompraActionPerformed
 
+        int quantidadeEstoque = 0;
+        boolean testeLogico = true;
         //Resgato os produtos
         ArrayList<Venda> listaItens = new ArrayList<Venda>();
         if (tblCompras.getRowCount() > 0) {
             for (int i = 0; i < tblCompras.getRowCount(); i++) {
+
+                ArrayList<Produto> lista = ProdutoDAO.pesquisarID(Integer.parseInt(tblCompras.getValueAt(i, 0).toString()));
+                for (Produto item : lista) {
+                    quantidadeEstoque = Integer.parseInt(String.valueOf(item.getQuantidadeProd()));
+                }
                 Venda item = new Venda();
                 item.setIdProd(Integer.parseInt(tblCompras.getValueAt(i, 0).toString()));
                 item.setQtdProd(Integer.parseInt(tblCompras.getValueAt(i, 2).toString()));
                 item.setValorUnid(Double.parseDouble(tblCompras.getValueAt(i, 3).toString()));
 
+                if (quantidadeEstoque <= (Integer.parseInt(tblCompras.getValueAt(i, 2).toString()))) {
+                    testeLogico = false;
+                    JOptionPane.showMessageDialog(this, "Não tem estoque suficiente.");
+                }
                 //Adiciono o objeto à listaItens
                 listaItens.add(item);
 
@@ -862,15 +888,18 @@ public class TelaVendas extends javax.swing.JFrame {
         objNotaFiscal.setValorTotalNota(TotalVendas);
         objNotaFiscal.setListaItens(listaItens);
 
-        if (tblCompras.getRowCount() > 0) {
-            boolean retorno = VendasDAO.salvarnota(objNotaFiscal);
-            if (retorno) {
-                JOptionPane.showMessageDialog(this, "Nota gravada com sucesso!");
+        if (testeLogico == true) {
+            
+            if (tblCompras.getRowCount() > 0) {
+                boolean retorno = VendasDAO.salvarnota(objNotaFiscal);
+                if (retorno) {
+                    JOptionPane.showMessageDialog(this, "Nota gravada com sucesso!");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Falha na gravação!");
+                }
             } else {
-                JOptionPane.showMessageDialog(this, "Falha na gravação!");
+                JOptionPane.showMessageDialog(this, "Não encontrei produto na lista!");
             }
-        }else{
-            JOptionPane.showMessageDialog(this, "Não encontrei produto na lista!");
         }
 
     }//GEN-LAST:event_btnFinalizarCompraActionPerformed
@@ -879,12 +908,16 @@ public class TelaVendas extends javax.swing.JFrame {
 
         DefaultTableModel modelo = (DefaultTableModel) tblCompras.getModel();
 
+        TotalVendas = 0;
+        lblTotalVenda.setText(String.valueOf(TotalVendas));
         //Limpar a tabela
         modelo.setRowCount(0);
+        //Lipar valor total 
     }//GEN-LAST:event_btnCancelarCompraActionPerformed
 
     private void abrirCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirCaixaActionPerformed
-
+        CadastroCliente cadastro = new CadastroCliente();
+        cadastro.setVisible(true);
     }//GEN-LAST:event_abrirCaixaActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -950,13 +983,19 @@ public class TelaVendas extends javax.swing.JFrame {
     private void btnRemoverItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverItemActionPerformed
 
         int indiceLinha = tblCompras.getSelectedRow();
+        double preco = 0;
+        double subtracao = Double.valueOf(lblTotalVenda.getText());
         if (indiceLinha >= 0) {
+            preco = Double.valueOf(tblCompras.getValueAt(indiceLinha, 4) + "");
             DefaultTableModel modelo = (DefaultTableModel) tblCompras.getModel();
             modelo.removeRow(indiceLinha);
+
         } else {
             JOptionPane.showMessageDialog(this, "Selecione o item!");
         }
 
+        TotalVendas = subtracao - preco;
+        lblTotalVenda.setText(String.valueOf(TotalVendas));
     }//GEN-LAST:event_btnRemoverItemActionPerformed
 
     private void txtAddItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddItemActionPerformed
@@ -1102,6 +1141,62 @@ public class TelaVendas extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_txtDinheiroKeyReleased
+
+    private void listFinalizarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listFinalizarCompraActionPerformed
+
+//Resgato os produtos
+        ArrayList<Venda> listaItens = new ArrayList<Venda>();
+        if (tblCompras.getRowCount() > 0) {
+            for (int i = 0; i < tblCompras.getRowCount(); i++) {
+                Venda item = new Venda();
+                item.setIdProd(Integer.parseInt(tblCompras.getValueAt(i, 0).toString()));
+                item.setQtdProd(Integer.parseInt(tblCompras.getValueAt(i, 2).toString()));
+                item.setValorUnid(Double.parseDouble(tblCompras.getValueAt(i, 3).toString()));
+
+                //Adiciono o objeto à listaItens
+                listaItens.add(item);
+
+            }
+        }
+
+        //Crio o objeto Venda
+        Venda objNotaFiscal = new Venda();
+        objNotaFiscal.setIdCliente(Integer.parseInt(lblIDCliente.getText()));
+        objNotaFiscal.setCpfCliente(lblCPFAtual.getText());
+        objNotaFiscal.setValorTotalNota(TotalVendas);
+        objNotaFiscal.setListaItens(listaItens);
+
+        if (tblCompras.getRowCount() > 0) {
+            boolean retorno = VendasDAO.salvarnota(objNotaFiscal);
+            if (retorno) {
+                JOptionPane.showMessageDialog(this, "Nota gravada com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Falha na gravação!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Não encontrei produto na lista!");
+        }
+    }//GEN-LAST:event_listFinalizarCompraActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+
+        DefaultTableModel modelo = (DefaultTableModel) tblCompras.getModel();
+
+        //Limpar a tabela
+        modelo.setRowCount(0);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+
+        int indiceLinha = tblCompras.getSelectedRow();
+        if (indiceLinha >= 0) {
+            DefaultTableModel modelo = (DefaultTableModel) tblCompras.getModel();
+            modelo.removeRow(indiceLinha);
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione o item!");
+        }
+
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments

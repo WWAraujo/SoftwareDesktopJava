@@ -81,6 +81,11 @@ public class CadastroProduto extends javax.swing.JFrame {
         });
 
         btnConsultaProd.setText("CONSULTAR");
+        btnConsultaProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaProdActionPerformed(evt);
+            }
+        });
 
         btnAlterarProd.setText("ALTERAR");
         btnAlterarProd.addActionListener(new java.awt.event.ActionListener() {
@@ -278,6 +283,11 @@ public class CadastroProduto extends javax.swing.JFrame {
     private void btnExcluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirProdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExcluirProdActionPerformed
+
+    private void btnConsultaProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaProdActionPerformed
+        TelaConsultaProduto consulta = new TelaConsultaProduto();
+        consulta.setVisible(true);
+    }//GEN-LAST:event_btnConsultaProdActionPerformed
 
     /**
      * @param args the command line arguments
