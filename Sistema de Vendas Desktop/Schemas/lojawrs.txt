@@ -62,13 +62,9 @@ end
 $$
 
 
-/*INSERT INTO lojawrs.cliente (nome_cli,cpf_cli,data_nascimento_cli,celular_cli,estadoCivil_cli,sexo_cli,endereco_cli,email_cli) 
-		VALUES('Wallace Teste1','124.465.689-11','1994-10-13','(11)4 9999-9999','Solteiro','Masculino','Rua de São paulo','wallace@senac.edu.br'),
-        ('Wallace teste2', '132.456.798-20','1994-10-13','','','','','');
+INSERT INTO lojawrs.cliente (nome_cli,cpf_cli,data_nascimento_cli,celular_cli,estadoCivil_cli,sexo_cli,endereco_cli,email_cli) 
+		VALUES('Wallace Wagner','124.465.689-11','1994-10-13','(11)4 9999-9999','Solteiro','Masculino','Rua de São paulo','wallace@senac.edu.br');
 
-INSERT INTO lojawrs.produto (nome_prod,preco_prod,tipo_prod,tamanho_prod,marca_prod,quantidade_prod,descricao_prod) 
-		VALUES('Wallace Teste1',591.5,'blusa','GG','Nike',10,'teste'),
-        ('Wallace Teste2',59,'blusas','G','',18,'');
         
 INSERT INTO lojawrs.produto (nome_prod,preco_prod,tipo_prod,tamanho_prod,
 marca_prod,quantidade_prod,descricao_prod) 
@@ -78,4 +74,3 @@ marca_prod,quantidade_prod,descricao_prod)
                 ('Tênis Softride Enzo',199.99,'Masculino','41','Puma',15,'Preto'),
                 ('Tênis TRC BLAZE',379.90,'Feminino','38','Puma',15,'Silhueta baixa');
         
-*/
