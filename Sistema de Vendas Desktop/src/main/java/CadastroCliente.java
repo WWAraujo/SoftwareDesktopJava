@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
+ * Essa tela pega os dados do cliente para fazer o cadastro e alteração de informações com GRUD na tela ClienteDAO
  *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
  * 
  */

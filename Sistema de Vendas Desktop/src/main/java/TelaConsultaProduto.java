@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
+ * Essa tela pesquisa todos os produtos cadastrados no banco e mostra em uma tabela
  *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
  * 
  */

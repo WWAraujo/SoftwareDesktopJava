@@ -3,6 +3,7 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
+ * Essa tela libera a entrada na tela principal. 
  *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
  * 
  */

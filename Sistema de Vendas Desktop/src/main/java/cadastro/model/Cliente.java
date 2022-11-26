@@ -2,6 +2,7 @@
 package cadastro.model;
 
 /**
+ * Nessa classe criamos os contrutores dos clientes
  *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
  * 
  */

@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Todas a interação no banco de dados sobre o produto são feitas nessa classe atravez de conexão com o mysql
  *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
  * 
  */

@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
+ * Esse é a tela principal de vendas, onde vai conversar com todas as outras telas
  * @author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
  *
  */

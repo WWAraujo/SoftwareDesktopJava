@@ -1,6 +1,7 @@
 
 import javax.swing.JOptionPane;
 /**
+ * Tela inicial do programa
  *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
  * 
  */

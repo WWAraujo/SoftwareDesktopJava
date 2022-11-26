@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
+ * Nessa classe criamos os contrutores das Vendas
  *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
  * 
  */

@@ -3,6 +3,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
+ * Essa tela salva toda a compra no banco de dados  
  *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
  * 
  */

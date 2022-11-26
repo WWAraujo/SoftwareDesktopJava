@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 
         
 /**
+ * Essa tela pega os dados do produto para fazer o cadastro de informações com GRUD na tela ProdutoDAO
  *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
  * 
  */

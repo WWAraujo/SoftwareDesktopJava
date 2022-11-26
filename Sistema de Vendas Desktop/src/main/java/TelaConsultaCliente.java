@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
+ * Essa tela faz uma busca (select) dos cliente cadastrados no banco buscando por nome .
  *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
  * 
  */

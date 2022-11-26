@@ -1,6 +1,7 @@
 package cadastro.model;
 
 /**
+ * Nessa classe criamos os contrutores dos Produtos
  *@author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
  * 
  */

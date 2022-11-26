@@ -6,6 +6,7 @@
 public class ConfirmarSaida extends javax.swing.JFrame {
 
     /**
+     * Essa tela valida se o usuario deseja mesmo finalizar todo o progrma
      * Creates new form ConfirmarSaída
      */
     public ConfirmarSaida() {

@@ -12,6 +12,7 @@ import cadastro.model.Produto;
 import cadastro.model.Venda;
 
 /**
+ * Todas a interação no banco de dados sobre as vendas são feitas nessa classe atravez de conexão com o mysql
  * @author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
  *
  */

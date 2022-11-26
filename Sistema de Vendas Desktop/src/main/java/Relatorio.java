@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
+ * Essa tela exibe todas as vendas no banco de dados tento sintético como analítico table pedido e item_pedido
  * @author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
  *
  */
