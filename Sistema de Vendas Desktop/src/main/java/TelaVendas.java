@@ -15,7 +15,9 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
- * Esse é a tela principal de vendas, onde vai conversar com todas as outras telas
+ * Esse é a tela principal de vendas, onde vai conversar com todas as outras
+ * telas
+ *
  * @author Wallace Wagner, Rafael de Souza, Semaías de Oliveira
  *
  */
@@ -872,37 +874,37 @@ public class TelaVendas extends javax.swing.JFrame {
                 item.setQtdProd(Integer.parseInt(tblCompras.getValueAt(i, 2).toString()));
                 item.setValorUnid(Double.parseDouble(tblCompras.getValueAt(i, 3).toString()));
 
-                if (quantidadeEstoque <= (Integer.parseInt(tblCompras.getValueAt(i, 2).toString()))) {
+                if (quantidadeEstoque < (Integer.parseInt(tblCompras.getValueAt(i, 2).toString()))) {
                     testeLogico = false;
-                    JOptionPane.showMessageDialog(this, "Não tem estoque suficiente.");
+                    JOptionPane.showMessageDialog(this, (i+1)+"º item não tem estoque suficiente.");
+                } else {
+                    testeLogico = true;
                 }
                 //Adiciono o objeto à listaItens
                 listaItens.add(item);
 
-            }
-        }
+                //Crio o objeto Venda
+                Venda objNotaFiscal = new Venda();
+                objNotaFiscal.setIdCliente(Integer.parseInt(lblIDCliente.getText()));
+                objNotaFiscal.setCpfCliente(lblCPFAtual.getText());
+                objNotaFiscal.setValorTotalNota(TotalVendas);
+                objNotaFiscal.setListaItens(listaItens);
 
-        //Crio o objeto Venda
-        Venda objNotaFiscal = new Venda();
-        objNotaFiscal.setIdCliente(Integer.parseInt(lblIDCliente.getText()));
-        objNotaFiscal.setCpfCliente(lblCPFAtual.getText());
-        objNotaFiscal.setValorTotalNota(TotalVendas);
-        objNotaFiscal.setListaItens(listaItens);
+                if (testeLogico == true) {
 
-        if (testeLogico == true) {
-            
-            if (tblCompras.getRowCount() > 0) {
-                boolean retorno = VendasDAO.salvarnota(objNotaFiscal);
-                if (retorno) {
-                    JOptionPane.showMessageDialog(this, "Nota gravada com sucesso!");
-                } else {
-                    JOptionPane.showMessageDialog(this, "Falha na gravação!");
+                    if (tblCompras.getRowCount() > 0) {
+                        boolean retorno = VendasDAO.salvarnota(objNotaFiscal);
+                        if (retorno) {
+                            JOptionPane.showMessageDialog(this, (i+1)+"º item gravado!");
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Falha na gravação!");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Não encontrei produto na lista!");
+                    }
                 }
-            } else {
-                JOptionPane.showMessageDialog(this, "Não encontrei produto na lista!");
             }
         }
-
     }//GEN-LAST:event_btnFinalizarCompraActionPerformed
 
     private void btnCancelarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCompraActionPerformed
