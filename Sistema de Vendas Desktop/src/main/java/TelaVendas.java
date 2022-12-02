@@ -876,7 +876,7 @@ public class TelaVendas extends javax.swing.JFrame {
 
                 if (quantidadeEstoque < (Integer.parseInt(tblCompras.getValueAt(i, 2).toString()))) {
                     testeLogico = false;
-                    JOptionPane.showMessageDialog(this, (i+1)+"º item não tem estoque suficiente.");
+                    JOptionPane.showMessageDialog(this, (i+1)+"º item, não tem estoque suficiente.");
                 } else {
                     testeLogico = true;
                 }
@@ -895,7 +895,7 @@ public class TelaVendas extends javax.swing.JFrame {
                     if (tblCompras.getRowCount() > 0) {
                         boolean retorno = VendasDAO.salvarnota(objNotaFiscal);
                         if (retorno) {
-                            JOptionPane.showMessageDialog(this, (i+1)+"º item gravado!");
+                            JOptionPane.showMessageDialog(this, (i+1)+"º item, gravado com sucesso!");
                         } else {
                             JOptionPane.showMessageDialog(this, "Falha na gravação!");
                         }
